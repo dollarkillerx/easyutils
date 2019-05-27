@@ -22,7 +22,7 @@ func TestNewUUIDSimplicity(t *testing.T) {
 }
 
 func TestMd5String(t *testing.T) {
-	s := Md5String("123")
+	s := Md5Encode("123")
 	s = strings.ToUpper(s)
 	if s != "202CB962AC59075B964B07152D234B70" {
 		t.Error("非正常",s)

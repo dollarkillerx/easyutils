@@ -5,7 +5,7 @@ import (
 	"encoding/hex"
 )
 
-func Md5String(str string) string {
+func Md5Encode(str string) string {
 	data := []byte(str)
 	md5Ctx := md5.New()
 	md5Ctx.Write(data)

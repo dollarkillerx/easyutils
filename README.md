@@ -18,7 +18,7 @@ easyutils Golang 常用工具库
 ### 简答用法
 - 把str转为md5
     ``` 
-    md5string := Md5String(string)
+    md5str := Md5Encode(string)
     ```
 - 获取当前时间戳,时区默认亚洲上海
     ``` 
