@@ -56,7 +56,15 @@ func CheckSession(sessionId string) bool {
 	if nowTime >= node.CreationTime && nowTime < node.ExpirationTime {
 		return true
 	}
+	// 删除过期的session
+	SessionMap.Delete(sessionId)
 	return false
+}
+
+
+// 删除session
+func DelSession(sessionId string) {
+	SessionMap.Delete(sessionId)
 }
 
 

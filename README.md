@@ -6,6 +6,7 @@ easyutils Golang 常用工具库
 ├── go.mod
 ├── LICENSE
 ├── README.md
+├── session.go 简单的session
 ├── simpleTime.go  时间相关
 ├── tootl_test.go 测试 
 └── uuid.go  uuid
