@@ -40,3 +40,12 @@ easyutils Golang 常用工具库
     ``` 
     uuidstr,err := NewUUIDSimplicity()
     ```
+- session
+    - 获取session
+       ``` 
+       session := GetSession("dollarkiller")
+       ```
+    - 验证session
+       ``` 
+       bool := CheckSession(session)
+       ``` 
