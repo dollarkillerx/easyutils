@@ -49,3 +49,11 @@ func TestGetTimeStringToTime(t *testing.T) {
 	}
 	t.Log(s)
 }
+
+func TestGetSession(t *testing.T) {
+	session := GetSession("dollarkiller")
+	t.Log(session)
+	bool := CheckSession(session)
+	t.Log(SessionMap.Load(session))
+	t.Log(bool)
+}
