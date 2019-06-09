@@ -25,10 +25,10 @@ type SessionNode struct {
 }
 
 // 获得session
-func GetSession(name string) string {
+func GetSession(name string,times int64) string { // name,过期时间
 	timeNano := time.Now().UnixNano()
 	time := time.Now().Unix()
-	outtime := time + 6*60*60
+	outtime := time + times
 	intn := rand.Intn(100000)
 	encode := Md5Encode(strconv.FormatInt(timeNano, 10) + strconv.Itoa(intn))
 	node := &SessionNode{

@@ -4,6 +4,7 @@
     <list default="true" id="e9cfc01a-e7f7-401e-acf9-59a6074ee6ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/session.go" beforeDir="false" afterPath="$PROJECT_DIR$/session.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tootl_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/tootl_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tootl_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="55" column="4" lean-forward="true" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="33" />
+            <state relative-caret-position="307">
+              <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -30,9 +31,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="184">
-                <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="354">
+                <caret line="46" column="52" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
               </first_editor>
               <second_editor />
             </state>
@@ -60,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/session.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="361">
+              <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
               <folding>
                 <element signature="e#96#122#0" expanded="true" />
               </folding>
@@ -96,8 +97,8 @@
       <list>
         <option value="$PROJECT_DIR$/uuid.go" />
         <option value="$PROJECT_DIR$/crypto.go" />
-        <option value="$PROJECT_DIR$/tootl_test.go" />
         <option value="$PROJECT_DIR$/session.go" />
+        <option value="$PROJECT_DIR$/tootl_test.go" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -201,17 +202,23 @@
     <history-entry file="TestGetSession_in_easyutils - 2019.06.09 at 12h 27m 24s.xml">
       <configuration name="TestGetSession in easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
+    <history-entry file="TestGetSession_in_easyutils - 2019.06.09 at 12h 38m 52s.xml">
+      <configuration name="TestGetSession in easyutils" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestGetSession_in_easyutils - 2019.06.09 at 12h 41m 58s.xml">
+      <configuration name="TestGetSession in easyutils" configurationId="GoTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16880342" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15865384" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32938644" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26480085" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -219,7 +226,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.28094727" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.27293578" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -241,13 +248,6 @@
     <entry file="file://$PROJECT_DIR$/go.mod">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/uuid.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simpleTime.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -255,10 +255,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tootl_test.go">
+    <entry file="file://$PROJECT_DIR$/session.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="55" column="4" lean-forward="true" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="33" />
+        <state relative-caret-position="361">
+          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
+          <folding>
+            <element signature="e#96#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -269,21 +272,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/session.go">
+    <entry file="file://$PROJECT_DIR$/uuid.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
-          <folding>
-            <element signature="e#96#122#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="115">
+          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tootl_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="184">
-            <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="354">
+            <caret line="46" column="52" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
           </first_editor>
           <second_editor />
         </state>

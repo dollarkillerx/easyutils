@@ -44,9 +44,13 @@ easyutils Golang 常用工具库
 - session
     - 获取session
        ``` 
-       session := GetSession("dollarkiller")
+       session := GetSession("dollarkiller",6*60*60)
        ```
     - 验证session
        ``` 
        bool := CheckSession(session)
        ``` 
+    - 销毁session
+        ```
+        DelSession(session)
+        ```
