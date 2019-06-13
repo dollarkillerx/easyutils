@@ -14,20 +14,20 @@ var (
 )
 
 // 获取当前时间
-func GetCurrentTime() string {
+func TimeGetNowTimeStr() string {
 	unix := time.Now().In(location).Unix()
 	return fmt.Sprintf("%v",unix)
 }
 
 // 时间戳转日期str
-func GetTimeToString(times string) (string,error) {
+func TimeGetTimeToString(times string) (string,error) {
 	i, err := strconv.ParseInt(times, 10, 64)
 	format := time.Unix(i, 0).Format(timeLayout)
 	return format,err
 }
 
 // 日期str转时间戳
-func GetTimeStringToTime(times string) (string,error) {
+func TimeGetStringToTime(times string) (string,error) {
 	inLocation, e := time.ParseInLocation(timeLayout, times, location)
 	unix := inLocation.Unix()
 	return fmt.Sprintf("%v",unix),e

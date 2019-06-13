@@ -29,15 +29,15 @@ easyutils Golang 常用工具库
 #### simpleTime 时间包
 - 获取当前时间戳,时区默认亚洲上海
     ``` 
-    timeString := GetCurrentTime()
+    timeString := TimeGetNowTimeStr()
     ```
 - 时间戳转换为日期
     ``` 
-    日期,err := GetTimeToString(时间戳string)
+    日期,err := TimeGetTimeToString(时间戳string)
     ```
 - 日期转换为时间戳
     ``` 
-    时间戳str,err := GetTimeStringToTime(日期)
+    时间戳str,err := TimeGetStringToTime(日期)
     ```
 #### uuid包
 - 获取uuid

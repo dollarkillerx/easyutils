@@ -30,12 +30,12 @@ func TestMd5String(t *testing.T) {
 }
 
 func TestGetCurrentTime(t *testing.T) {
-	time := GetCurrentTime()
+	time := TimeGetNowTimeStr()
 	t.Log(time)
 }
 
 func TestGetTimeToString(t *testing.T) {
-	s, e := GetTimeToString("1558057058")
+	s, e := TimeGetTimeToString("1558057058")
 	if e!=nil {
 		t.Error(e.Error())
 	}
@@ -43,7 +43,7 @@ func TestGetTimeToString(t *testing.T) {
 }
 
 func TestGetTimeStringToTime(t *testing.T) {
-	s, e := GetTimeStringToTime("2019-05-17")
+	s, e := TimeGetStringToTime("2019-05-17")
 	if e!=nil {
 		t.Error(e.Error())
 	}
