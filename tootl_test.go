@@ -51,12 +51,12 @@ func TestGetTimeStringToTime(t *testing.T) {
 }
 
 func TestGetSession(t *testing.T) {
-	session := GetSession("dollarkiller",6*60*60)
+	session := SessionGet("dollarkiller",6*60*60)
 	t.Log(session)
-	bool := CheckSession(session)
+	bool := SessionCheck(session)
 	t.Log(SessionMap.Load(session))
 	t.Log(bool)
-	DelSession(session)
-	bool = CheckSession(session)
+	SessionDel(session)
+	bool = SessionCheck(session)
 	t.Log(bool)
 }

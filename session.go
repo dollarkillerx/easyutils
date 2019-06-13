@@ -25,7 +25,7 @@ type SessionNode struct {
 }
 
 // 获得session
-func GetSession(name string,times int64) string { // name,过期时间
+func SessionGet(name string,times int64) string { // name,过期时间
 	timeNano := time.Now().UnixNano()
 	time := time.Now().Unix()
 	outtime := time + times
@@ -42,7 +42,7 @@ func GetSession(name string,times int64) string { // name,过期时间
 }
 
 // 验证session
-func CheckSession(sessionId string) bool {
+func SessionCheck(sessionId string) bool {
 	if sessionId == "" || len(sessionId) == 0 {
 		return false
 	}
@@ -63,8 +63,6 @@ func CheckSession(sessionId string) bool {
 
 
 // 删除session
-func DelSession(sessionId string) {
+func SessionDel(sessionId string) {
 	SessionMap.Delete(sessionId)
 }
-
-

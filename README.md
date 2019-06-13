@@ -51,16 +51,16 @@ easyutils Golang 常用工具库
 #### session 包
 - 获取session
    ``` 
-   session := GetSession("dollarkiller",6*60*60)
+   session := SessionGet("dollarkiller",6*60*60)
    ```
 - 验证session
    ``` 
-   bool := CheckSession(session)
+   bool := SessionCheck(session)
    ``` 
 - 销毁session
     ```
-    DelSession(session)
-        ```
+    SessionDel(session)
+    ```
 #### file包
 - 判断文件夹是否存在
     ``` 
