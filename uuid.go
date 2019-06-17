@@ -5,21 +5,21 @@ import (
 	"os/exec"
 )
 
-func NewUUID() (string,error) {
+func NewUUID() (string, error) {
 	out, err := exec.Command("uuidgen").Output()
 
 	oot := fmt.Sprintf("%s", out)
-	return oot,err
+	return oot, err
 }
 
 // 获取没有 - 的uuid
-func NewUUIDSimplicity() (string,error) {
+func NewUUIDSimplicity() (string, error) {
 	s, e := NewUUID()
 	var u string
-	for _,k :=range s {
+	for _, k := range s {
 		if k != '-' {
-			u = fmt.Sprintf("%s%s",u,string(k))
+			u = fmt.Sprintf("%s%s", u, string(k))
 		}
 	}
-	return u,e
+	return u, e
 }

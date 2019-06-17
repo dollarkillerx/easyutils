@@ -48,16 +48,16 @@ func DirPing(path string) error {
 }
 
 // 获取文件后缀
-func FileGetPostfix(filename string) (string,error)  {
+func FileGetPostfix(filename string) (string, error) {
 	split := strings.Split(filename, ".")
 	if len(split) == 0 {
-		return "",errors.New("File Get Postfix Error")
+		return "", errors.New("File Get Postfix Error")
 	}
-	return split[len(split)-1],nil
+	return split[len(split)-1], nil
 }
 
 // 获得随机文件名 传入postfilx后缀
-func FileGetRandomName(postfilx string) string  {
+func FileGetRandomName(postfilx string) string {
 	nano := time.Now().UnixNano()
 	intn := rand.Intn(10000)
 	intn = rand.Intn(10000)
@@ -72,7 +72,7 @@ func FileGetRandomName(postfilx string) string  {
 // 获得文件sha1
 func FileGetSha1(file *os.File) string {
 	hash := sha1.New()
-	io.Copy(hash,file)
+	io.Copy(hash, file)
 	return hex.EncodeToString(hash.Sum(nil))
 }
 
@@ -92,4 +92,3 @@ func FielGetSize(filename string) int64 {
 	})
 	return result
 }
-

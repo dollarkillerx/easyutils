@@ -19,25 +19,25 @@ var (
 )
 
 type SessionNode struct {
-	Name string
-	CreationTime int64 // 创建时间
+	Name           string
+	CreationTime   int64 // 创建时间
 	ExpirationTime int64 // 过期时间
 }
 
 // 获得session
-func SessionGet(name string,times int64) string { // name,过期时间
+func SessionGet(name string, times int64) string { // name,过期时间
 	timeNano := time.Now().UnixNano()
 	time := time.Now().Unix()
 	outtime := time + times
 	intn := rand.Intn(100000)
 	encode := Md5Encode(strconv.FormatInt(timeNano, 10) + strconv.Itoa(intn))
 	node := &SessionNode{
-		Name:         name,
-		CreationTime: time,
+		Name:           name,
+		CreationTime:   time,
 		ExpirationTime: outtime,
 	}
 
-	SessionMap.Store(encode,node)
+	SessionMap.Store(encode, node)
 	return encode
 }
 
@@ -60,7 +60,6 @@ func SessionCheck(sessionId string) bool {
 	SessionMap.Delete(sessionId)
 	return false
 }
-
 
 // 删除session
 func SessionDel(sessionId string) {
