@@ -51,11 +51,18 @@ func TestGetTimeStringToTime(t *testing.T) {
 }
 
 func TestGetSession(t *testing.T) {
-	session := SessionGet("dollarkiller", 6*60*60)
+	session := SessionGenerate("dollarkiller", 6*60*60)
 	t.Log(session)
 	bool := SessionCheck(session)
 	t.Log(SessionMap.Load(session))
 	t.Log(bool)
+
+	node, e := SessionGetData(session)
+	if e != nil {
+		t.Fatal(e.Error())
+	}
+	t.Log(node)
+
 	SessionDel(session)
 	bool = SessionCheck(session)
 	t.Log(bool)

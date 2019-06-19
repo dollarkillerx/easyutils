@@ -51,8 +51,12 @@ easyutils Golang 常用工具库
 #### session 包
 - 获取session
    ``` 
-   session := SessionGet("dollarkiller",6*60*60)
+   session := SessionGenerate("dollarkiller",6*60*60)
    ```
+- 获得session数据
+    ``` 
+    node, e := SessionGetData(session)
+    ```
 - 验证session
    ``` 
    bool := SessionCheck(session)
