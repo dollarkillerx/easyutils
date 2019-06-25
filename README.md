@@ -26,6 +26,34 @@ easyutils Golang 常用工具库
     ``` 
     sha1str := Sha1Encode("hello")
     ```
+- RSA256 公钥密钥对生成
+    ``` 
+    e, priKey, pubKey := GenRsaKey(1024) // 1024 密钥长度
+    ```
+- Rsa256 加密
+    ``` 
+    RsaEncrypt(origData,pubKey []byte) ([]byte,error)
+    ```
+- Rsa256 加密简单
+    ``` 
+    RsaEncryptSimple(origData,pubKey string) (string,error)
+    ```
+- Rsa256 解密
+    ```
+    RsaDecrypt(ciphertext,privateKey []byte) ([]byte, error)
+    ```
+- Rsa256 解密简单
+    ```
+    RsaDecryptSimple(ciphertext,privateKey string) (string, error)
+    ```
+- Base64编码
+    ``` 
+    Base64Encode(data []byte) string
+    ```
+- Base64解码
+    ``` 
+    Base64Decode(s string) ([]byte,error)
+    ```
 #### simpleTime 时间包
 - 获取当前时间戳,时区默认亚洲上海
     ``` 

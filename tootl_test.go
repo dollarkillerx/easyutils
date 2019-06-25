@@ -67,3 +67,27 @@ func TestGetSession(t *testing.T) {
 	bool = SessionCheck(session)
 	t.Log(bool)
 }
+
+func TestGenRsaKey(t *testing.T) {
+	e, priKey, pubKey := GenRsaKey(1024)
+	if e == nil {
+		t.Log(priKey)
+		t.Log(pubKey)
+	}
+
+	data:="1231231245asdasd你好"
+	s, e := RsaEncryptSimple(data, pubKey)
+	if e != nil {
+		t.Fatal(e.Error())
+	}
+	simple, e := RsaDecryptSimple(s, priKey)
+	if e != nil {
+		t.Fatal(e.Error())
+	}
+	if strings.EqualFold(data,simple) {
+		t.Log("OK")
+	}
+	t.Logf(data)
+	t.Logf(s)
+	t.Logf(simple)
+}
