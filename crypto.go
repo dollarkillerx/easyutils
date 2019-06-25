@@ -1,10 +1,12 @@
 package utils
 
 import (
+	"crypto"
 	"crypto/md5"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/sha1"
+	"crypto/sha256"
 	"crypto/x509"
 	"encoding/base64"
 	"encoding/hex"
@@ -127,6 +129,77 @@ func RsaDecryptSimple(ciphertext, privateKey string) (string, error) {
 	pri := []byte(privateKey)
 	bytes, e := RsaDecrypt(decode, pri)
 	return string(bytes), e
+}
+
+// Rsa256 签名
+// @params: origData 需要签名的数据
+// @Params: prvKey 私钥
+func RsaSign(data, prvKey []byte) ([]byte, error) {
+	hash := sha256.New()
+	hash.Write(data)
+	sum := hash.Sum(nil)
+
+	//解密私钥
+	block, _ := pem.Decode(prvKey)
+	if block == nil {
+		return nil, errors.New("private key error!")
+	}
+	//解析PKCS1格式的私钥
+	priv, err := x509.ParsePKCS1PrivateKey(block.Bytes)
+	if err != nil {
+		return nil, err
+	}
+
+	// 签名
+	return rsa.SignPKCS1v15(rand.Reader, priv, crypto.SHA256, sum)
+}
+
+// Rsa256 验签
+// @params: data 原始数据
+// @params: signature 签名
+// @params: publicKey 公钥
+func RsaSignVer(data, signature, publicKey []byte) error {
+	hashed := sha256.Sum256(data)
+	block, _ := pem.Decode(publicKey)
+	if block == nil {
+		return errors.New("public key error")
+	}
+	// 解析公钥
+	pubInterface, err := x509.ParsePKIXPublicKey(block.Bytes)
+	if err != nil {
+		return err
+	}
+	// 类型断言
+	pub := pubInterface.(*rsa.PublicKey)
+	//验证签名
+	return rsa.VerifyPKCS1v15(pub, crypto.SHA256, hashed[:], signature)
+}
+
+// Rsa256 签名简单
+// @params: origData 需要签名的数据
+// @Params: prvKey 私钥
+func RsaSignSimple(data, prvKey string) (string, error) {
+	bytes := []byte(data)
+	i := []byte(prvKey)
+	sign, e := RsaSign(bytes, i)
+	if e != nil {
+		return "", e
+	}
+	return Base64Encode(sign), nil
+}
+
+// Rsa256 验签简单
+// @params: data 原始数据
+// @params: signature 签名
+// @params: publicKey 公钥
+func RsaSignVerSimple(data, signature, publicKey string) error {
+	dat := []byte(data)
+	bytes, e := Base64Decode(signature)
+	if e != nil {
+		return e
+	}
+	pub := []byte(publicKey)
+	return RsaSignVer(dat, bytes, pub)
 }
 
 // Base64编码

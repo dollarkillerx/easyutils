@@ -91,3 +91,22 @@ func TestGenRsaKey(t *testing.T) {
 	t.Logf(s)
 	t.Logf(simple)
 }
+
+func TestRsaSign(t *testing.T) {
+	e, priKey, pubKey := GenRsaKey(1024)
+	if e == nil {
+		t.Log(priKey)
+		t.Log(pubKey)
+	}
+	data := "1a2sd1as23d你好"
+	s, e := RsaSignSimple(data, priKey)
+	if e != nil {
+		t.Log(e.Error())
+	}
+	t.Log("签名: ", s)
+	e = RsaSignVerSimple(data, s, pubKey)
+	if e != nil {
+		t.Log("验证失败")
+	}
+	t.Log("验证成功")
+}

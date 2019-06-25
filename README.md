@@ -46,6 +46,22 @@ easyutils Golang 常用工具库
     ```
     RsaDecryptSimple(ciphertext,privateKey string) (string, error)
     ```
+- Rsa256 签名
+    ``` 
+    RsaSignVer(data,signature,publicKey []byte) error
+    ```
+- Rsa256 简单签名
+    ``` 
+    RsaSignSimple(data, prvKey string) (string, error)
+    ```
+- Rsa256 验签
+    ``` 
+    RsaSignVer(data,signature,publicKey []byte) error
+    ```
+- Rsa256 简单验签
+    ``` 
+    RsaSignVerSimple(data,signature,publicKey string) error
+    ```
 - Base64编码
     ``` 
     Base64Encode(data []byte) string
