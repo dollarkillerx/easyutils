@@ -33,12 +33,12 @@ func Sha1Encode(str string) string {
 // @params: bits 密钥长度
 // @returns: private 密钥
 // @returns: public 公钥
-func GenRsaKey(bits int) (e error,priKey string,pubKey string) {
+func GenRsaKey(bits int) (e error, priKey string, pubKey string) {
 
 	// 生成私钥
 	privateKey, e := rsa.GenerateKey(rand.Reader, bits)
 	if e != nil {
-		return e,"",""
+		return e, "", ""
 	}
 
 	derStream := x509.MarshalPKCS1PrivateKey(privateKey)
@@ -51,7 +51,7 @@ func GenRsaKey(bits int) (e error,priKey string,pubKey string) {
 	publicKey := &privateKey.PublicKey
 	derPkix, err := x509.MarshalPKIXPublicKey(publicKey)
 	if err != nil {
-		return e,"",""
+		return e, "", ""
 	}
 	publicBlock := &pem.Block{
 		Type:  "PUBLIC KEY",
@@ -61,16 +61,15 @@ func GenRsaKey(bits int) (e error,priKey string,pubKey string) {
 	//fmt.Printf("=======公钥文件内容=========%v", string(pem.EncodeToMemory(publicBlock)))
 
 	if err != nil {
-		return e,"",""
+		return e, "", ""
 	}
-	return nil,string(pem.EncodeToMemory(priBlock)),string(pem.EncodeToMemory(publicBlock))
+	return nil, string(pem.EncodeToMemory(priBlock)), string(pem.EncodeToMemory(publicBlock))
 }
-
 
 // Rsa256 加密
 // @params: origData 原始数据
 // @Params: pubKey 公钥
-func RsaEncrypt(origData,pubKey []byte) ([]byte,error) {
+func RsaEncrypt(origData, pubKey []byte) ([]byte, error) {
 	//解密pem格式的公钥
 	block, _ := pem.Decode(pubKey)
 	if block == nil {
@@ -90,7 +89,7 @@ func RsaEncrypt(origData,pubKey []byte) ([]byte,error) {
 // Rsa256 加密简单
 // @params: origData 原始数据
 // @Params: pubKey 公钥
-func RsaEncryptSimple(origData,pubKey string) (string,error) {
+func RsaEncryptSimple(origData, pubKey string) (string, error) {
 	orgData := []byte(origData)
 	pubK := []byte(pubKey)
 	bytes, e := RsaEncrypt(orgData, pubK)
@@ -98,13 +97,13 @@ func RsaEncryptSimple(origData,pubKey string) (string,error) {
 		return "", e
 	}
 	encode := Base64Encode(bytes)
-	return encode,nil
+	return encode, nil
 }
 
 // Rsa256 解密
 // @params: ciphertext 加密数据
 // @Params: prvKey 私钥
-func RsaDecrypt(ciphertext,privateKey []byte) ([]byte, error) {
+func RsaDecrypt(ciphertext, privateKey []byte) ([]byte, error) {
 	//解密
 	block, _ := pem.Decode(privateKey)
 	if block == nil {
@@ -119,18 +118,16 @@ func RsaDecrypt(ciphertext,privateKey []byte) ([]byte, error) {
 	return rsa.DecryptPKCS1v15(rand.Reader, priv, ciphertext)
 }
 
-
 // Rsa256 解密简单
-func RsaDecryptSimple(ciphertext,privateKey string) (string, error) {
+func RsaDecryptSimple(ciphertext, privateKey string) (string, error) {
 	decode, i := Base64Decode(ciphertext)
 	if i != nil {
-		return "",i
+		return "", i
 	}
 	pri := []byte(privateKey)
 	bytes, e := RsaDecrypt(decode, pri)
-	return string(bytes),e
+	return string(bytes), e
 }
-
 
 // Base64编码
 func Base64Encode(data []byte) string {
@@ -138,6 +135,6 @@ func Base64Encode(data []byte) string {
 }
 
 // Base64解码
-func Base64Decode(s string) ([]byte,error) {
+func Base64Decode(s string) ([]byte, error) {
 	return base64.StdEncoding.DecodeString(s)
 }

@@ -75,7 +75,7 @@ func TestGenRsaKey(t *testing.T) {
 		t.Log(pubKey)
 	}
 
-	data:="1231231245asdasd你好"
+	data := "1231231245asdasd你好"
 	s, e := RsaEncryptSimple(data, pubKey)
 	if e != nil {
 		t.Fatal(e.Error())
@@ -84,7 +84,7 @@ func TestGenRsaKey(t *testing.T) {
 	if e != nil {
 		t.Fatal(e.Error())
 	}
-	if strings.EqualFold(data,simple) {
+	if strings.EqualFold(data, simple) {
 		t.Log("OK")
 	}
 	t.Logf(data)

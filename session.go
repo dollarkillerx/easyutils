@@ -42,23 +42,23 @@ func SessionGenerate(name string, times int64) string { // name,过期时间
 }
 
 // 获取session数据
-func SessionGetData(sessionId string) (*SessionNode,error) {
+func SessionGetData(sessionId string) (*SessionNode, error) {
 	if sessionId == "" || len(sessionId) == 0 {
-		return nil,errors.New("not data")
+		return nil, errors.New("not data")
 	}
 	value, ok := SessionMap.Load(sessionId)
 	if ok != true {
-		return nil,errors.New("not data")
+		return nil, errors.New("not data")
 	}
 
 	node := value.(*SessionNode)
 	nowTime := time.Now().Unix()
 	if nowTime >= node.CreationTime && nowTime < node.ExpirationTime {
-		return node,nil
+		return node, nil
 	}
 	// 删除过期的session
 	SessionMap.Delete(sessionId)
-	return nil,errors.New("not data")
+	return nil, errors.New("not data")
 }
 
 // 验证session
