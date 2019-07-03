@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9cfc01a-e7f7-401e-acf9-59a6074ee6ee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/token.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crypto.go" beforeDir="false" afterPath="$PROJECT_DIR$/crypto.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tootl_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/tootl_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,32 +28,41 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/tootl_test.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="262">
-                  <caret line="101" column="24" selection-start-line="101" selection-start-column="24" selection-end-line="101" selection-end-column="24" />
+                <state relative-caret-position="185">
+                  <caret line="98" column="21" lean-forward="true" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/token.go">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-1738">
+                  <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+                  <folding>
+                    <element signature="e#95#130#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/README.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
                 <state split_layout="FIRST">
-                  <first_editor relative-caret-position="525">
-                    <caret line="110" column="4" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
+                  <first_editor relative-caret-position="523">
+                    <caret line="165" column="39" selection-start-line="165" selection-start-column="39" selection-end-line="165" selection-end-column="39" />
                   </first_editor>
                   <second_editor />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/crypto.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="141">
-                  <caret line="160" column="54" selection-start-line="160" selection-start-column="5" selection-end-line="160" selection-end-column="54" />
-                  <folding>
-                    <element signature="e#15#70#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="-643">
+                  <caret line="153" column="12" selection-start-line="153" selection-start-column="12" selection-end-line="153" selection-end-column="12" />
                 </state>
               </provider>
             </entry>
@@ -60,7 +70,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file:///opt/go/src/encoding/pem/pem.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="198">
+                <state relative-caret-position="1610">
                   <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
                 </state>
               </provider>
@@ -69,7 +79,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file:///opt/go/src/crypto/rsa/rsa.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="219">
+                <state relative-caret-position="4508">
                   <caret line="207" column="41" selection-start-line="207" selection-start-column="41" selection-end-line="207" selection-end-column="41" />
                 </state>
               </provider>
@@ -89,13 +99,10 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/README.md">
-              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-                <state split_layout="FIRST">
-                  <first_editor relative-caret-position="470">
-                    <caret line="58" column="53" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
-                  </first_editor>
-                  <second_editor />
+            <entry file="file://$PROJECT_DIR$/token.go">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="140">
+                  <caret line="114" column="42" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="42" />
                 </state>
               </provider>
             </entry>
@@ -121,16 +128,16 @@
         <option value="$PROJECT_DIR$/uuid.go" />
         <option value="$PROJECT_DIR$/session.go" />
         <option value="$PROJECT_DIR$/crypto.go" />
+        <option value="$PROJECT_DIR$/token.go" />
         <option value="$PROJECT_DIR$/tootl_test.go" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="717" />
-    <option name="y" value="51" />
-    <option name="width" value="1546" />
-    <option name="height" value="996" />
+    <option name="y" value="24" />
+    <option name="width" value="1233" />
+    <option name="height" value="933" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -180,7 +187,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestRsaSign in easyutils">
+  <component name="RunManager" selected="Go Test.TestNewUtilsToken in easyutils">
     <configuration name="TestGenRsaKey in easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="easyutils" />
       <working_directory value="$PROJECT_DIR$" />
@@ -203,6 +210,28 @@
       <pattern value="^TestGetSession$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestNewUtilsToken in easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="easyutils" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="easyutils" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestNewUtilsToken$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestRsaDecryptSimple in easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="easyutils" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="easyutils" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestRsaDecryptSimple$" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestRsaSign in easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="easyutils" />
       <working_directory value="$PROJECT_DIR$" />
@@ -214,67 +243,58 @@
       <pattern value="^TestRsaSign$" />
       <method v="2" />
     </configuration>
-    <configuration name="go test easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="easyutils" />
-      <working_directory value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="easyutils" />
-      <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestNewUtilsToken in easyutils" />
+        <item itemvalue="Go Test.TestRsaDecryptSimple in easyutils" />
         <item itemvalue="Go Test.TestRsaSign in easyutils" />
         <item itemvalue="Go Test.TestGenRsaKey in easyutils" />
         <item itemvalue="Go Test.TestGetSession in easyutils" />
-        <item itemvalue="Go Test.go test easyutils" />
       </list>
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="TestGetSession_in_easyutils - 2019.06.09 at 12h 41m 58s.xml">
-      <configuration name="TestGetSession in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 57m 58s.xml">
+      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGetSession_in_easyutils - 2019.06.13 at 10h 58m 34s.xml">
-      <configuration name="TestGetSession in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 02s.xml">
+      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="go_test_easyutils - 2019.06.13 at 10h 58m 44s.xml">
-      <configuration name="go test easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 08s.xml">
+      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGetSession_in_easyutils - 2019.06.19 at 19h 31m 50s.xml">
-      <configuration name="TestGetSession in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 15s.xml">
+      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGetSession_in_easyutils - 2019.06.19 at 19h 32m 56s.xml">
-      <configuration name="TestGetSession in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 20s.xml">
+      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGetSession_in_easyutils - 2019.06.19 at 19h 33m 10s.xml">
-      <configuration name="TestGetSession in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 27s.xml">
+      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGenRsaKey_in_easyutils - 2019.06.25 at 09h 42m 38s.xml">
-      <configuration name="TestGenRsaKey in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 31s.xml">
+      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGenRsaKey_in_easyutils - 2019.06.25 at 09h 46m 57s.xml">
-      <configuration name="TestGenRsaKey in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 36s.xml">
+      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGenRsaKey_in_easyutils - 2019.06.25 at 10h 09m 57s.xml">
-      <configuration name="TestGenRsaKey in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 39s.xml">
+      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestRsaSign_in_easyutils - 2019.06.25 at 10h 35m 43s.xml">
-      <configuration name="TestRsaSign in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestNewUtilsToken_in_easyutils - 2019.07.03 at 21h 50m 17s.xml">
+      <configuration name="TestNewUtilsToken in easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.21161549" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.17040598" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26372445" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28094727" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -282,7 +302,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.29063508" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.23250808" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -302,9 +322,6 @@
     <SUITE FILE_PATH="coverage/easyutils$TestGetSession_in_easyutils.out" NAME="TestGetSession in easyutils Coverage Results" MODIFIED="1560394714584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/go.mod">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/uuid.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -319,6 +336,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///opt/go/src/encoding/pem/pem.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1610">
+          <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/go/src/crypto/rsa/rsa.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4508">
+          <caret line="207" column="41" selection-start-line="207" selection-start-column="41" selection-end-line="207" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/simpleTime.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -326,33 +357,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///opt/go/src/crypto/rsa/rsa.go">
+    <entry file="file://$PROJECT_DIR$/go.mod">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crypto.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="207" column="41" selection-start-line="207" selection-start-column="41" selection-end-line="207" selection-end-column="41" />
+        <state relative-caret-position="-643">
+          <caret line="153" column="12" selection-start-line="153" selection-start-column="12" selection-end-line="153" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///opt/go/src/encoding/pem/pem.go">
+    <entry file="file:///opt/go/src/strings/strings.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+        <state relative-caret-position="300">
+          <caret line="307" column="5" selection-start-line="307" selection-start-column="5" selection-end-line="307" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tootl_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="101" column="24" selection-start-line="101" selection-start-column="24" selection-end-line="101" selection-end-column="24" />
+        <state relative-caret-position="185">
+          <caret line="98" column="21" lean-forward="true" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crypto.go">
+    <entry file="file://$PROJECT_DIR$/token.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="160" column="54" selection-start-line="160" selection-start-column="5" selection-end-line="160" selection-end-column="54" />
+        <state relative-caret-position="-1738">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
           <folding>
-            <element signature="e#15#70#0" expanded="true" />
+            <element signature="e#95#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -360,8 +394,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="470">
-            <caret line="58" column="53" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
+          <first_editor relative-caret-position="523">
+            <caret line="165" column="39" selection-start-line="165" selection-start-column="39" selection-end-line="165" selection-end-column="39" />
           </first_editor>
           <second_editor />
         </state>

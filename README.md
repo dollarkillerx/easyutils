@@ -16,8 +16,8 @@ easyutils Golang 常用工具库
 严格单元测试 保证代码质量
 献丑了
 
-### 简单用法
-#### crypto加密包
+## 简单用法
+### crypto加密包
 - 把str转为md5
     ``` 
     md5str := Md5Encode(string)
@@ -70,7 +70,9 @@ easyutils Golang 常用工具库
     ``` 
     Base64Decode(s string) ([]byte,error)
     ```
-#### simpleTime 时间包
+    
+    
+### simpleTime 时间包
 - 获取当前时间戳,时区默认亚洲上海
     ``` 
     timeString := TimeGetNowTimeStr()
@@ -83,7 +85,9 @@ easyutils Golang 常用工具库
     ``` 
     时间戳str,err := TimeGetStringToTime(日期)
     ```
-#### uuid包
+    
+    
+### uuid包
 - 获取uuid
     ``` 
     uuidstr,err := NewUUID()
@@ -92,7 +96,9 @@ easyutils Golang 常用工具库
     ``` 
     uuidstr,err := NewUUIDSimplicity()
     ```
-#### session 包
+    
+    
+### session 包
 - 获取session
    ``` 
    session := SessionGenerate("dollarkiller",6*60*60)
@@ -109,7 +115,9 @@ easyutils Golang 常用工具库
     ```
     SessionDel(session)
     ```
-#### file包
+    
+    
+### file包
 - 判断文件夹是否存在
     ``` 
     ok,err := PathExists("./file")
@@ -133,4 +141,27 @@ easyutils Golang 常用工具库
 - 获取文件MD5
     ``` 
     str := FileGetMD5(file *os.File)
+    ```
+    
+### Token
+- 初始化
+    ``` 
+    _, priKey, pubKey := GenRsaKey(1024)
+        jwt := NewUtilsToken(priKey, pubKey)
+    ```
+- 生成JWT
+    ```
+    s, e := jwt.GeneraJwtToken(head, payload)
+    ```
+- 生成JWT 缓存版本
+    ``` 
+    s, e := jwt.GeneraJwtTokenToData(head, payload)
+    ```
+- 验证JWT
+    ``` 
+    bool := jwt.VerificationToken(s)
+    ```
+- 验证JWT 缓存版本
+    ``` 
+    bool := jwt.VerificationTokenByData(s)
     ```

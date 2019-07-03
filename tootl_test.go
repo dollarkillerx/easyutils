@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"strconv"
 	"strings"
 	"testing"
 )
@@ -109,4 +110,44 @@ func TestRsaSign(t *testing.T) {
 		t.Log("验证失败")
 	}
 	t.Log("验证成功")
+}
+
+func TestRsaDecryptSimple(t *testing.T) {
+	e, priKey, pubKey := GenRsaKey(1024)
+	if e == nil {
+		t.Log(len(priKey))
+		t.Log(len(pubKey))
+	}
+	t.Logf(priKey)
+	t.Logf(pubKey)
+}
+
+func TestNewUtilsToken(t *testing.T) {
+	_, priKey, pubKey := GenRsaKey(1024)
+	jwt := NewUtilsToken(priKey, pubKey)
+
+	head := &JwtHeader{
+		Alg:"alg",
+		Type:"rsa256",
+	}
+
+	i, _ := strconv.Atoi(TimeGetNowTimeStr())
+	exp := strconv.Itoa(i + 60*60*6)
+
+
+	payload := &JwtPayload{
+		Exp:exp,
+		Nbf:TimeGetNowTimeStr(),
+	}
+
+	s, e := jwt.GeneraJwtToken(head, payload)
+	if e != nil {
+		t.Fatal(e.Error())
+	}
+
+	bool := jwt.VerificationToken(s)
+	if bool != true {
+		t.Logf("true")
+	}
+
 }
