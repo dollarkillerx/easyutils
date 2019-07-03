@@ -14,17 +14,17 @@ import (
 )
 
 /**
-	Token 包
-	思索后,考虑到未来的扩展型 只是做了 生成和验证    (只提供一个基于内存的存储)
- */
+Token 包
+思索后,考虑到未来的扩展型 只是做了 生成和验证    (只提供一个基于内存的存储)
+*/
 
 type JwtHeader struct {
-	Alg string `json:"alg"` // 算法名称
+	Alg  string `json:"alg"`  // 算法名称
 	Type string `json:"type"` // 类型
 }
 
 type JwtPayload struct {
-	Iss string `json:"iss"`  // 签发人
+	Iss string `json:"iss"` // 签发人
 	Exp string `json:"exp"` // 过期时间
 	Sub string `json:"sub"` // 主题
 	Nbf string `json:"nbf"` // 生效时间
@@ -34,25 +34,25 @@ type JwtPayload struct {
 
 // token
 type JwtUtils struct {
-	priKey string  // 私钥
-	pubKey string  // 公钥
-	data sync.Map // 存储
+	priKey string   // 私钥
+	pubKey string   // 公钥
+	data   sync.Map // 存储
 }
 
 // 初始化token
-func NewUtilsToken(prikey string,pubkey string) *JwtUtils {
+func NewUtilsToken(prikey string, pubkey string) *JwtUtils {
 	return &JwtUtils{
-		priKey:prikey,
-		pubKey:pubkey,
-		data:sync.Map{},
+		priKey: prikey,
+		pubKey: pubkey,
+		data:   sync.Map{},
 	}
 }
 
 // 生成JWT
-func (t *JwtUtils) GeneraJwtToken(header *JwtHeader,payload *JwtPayload) (string,error) {
+func (t *JwtUtils) GeneraJwtToken(header *JwtHeader, payload *JwtPayload) (string, error) {
 	headerJson, e := json.Marshal(header)
 	if e != nil {
-		return "",e
+		return "", e
 	}
 	payloadJson, e := json.Marshal(payload)
 	if e != nil {
@@ -62,25 +62,25 @@ func (t *JwtUtils) GeneraJwtToken(header *JwtHeader,payload *JwtPayload) (string
 	headerEnco := Base64Encode(headerJson)
 	payloadEnco := Base64Encode(payloadJson)
 
-	head := headerEnco + "." + payloadEnco  // 头 + 载荷
-	signature,e := RsaSignSimple(head,t.priKey)// 签名
+	head := headerEnco + "." + payloadEnco        // 头 + 载荷
+	signature, e := RsaSignSimple(head, t.priKey) // 签名
 	if e != nil {
-		return "",e
+		return "", e
 	}
 
 	jwt := head + "." + signature
 
-	return jwt,nil
+	return jwt, nil
 }
 
 // 生成token并存入 内存中
-func (t *JwtUtils) GeneraJwtTokenToData(header *JwtHeader,payload *JwtPayload) (string,error) {
+func (t *JwtUtils) GeneraJwtTokenToData(header *JwtHeader, payload *JwtPayload) (string, error) {
 	s, e := t.GeneraJwtToken(header, payload)
 	if e != nil {
-		return "",e
+		return "", e
 	}
-	t.data.Store(s,payload.Exp)
-	return s,nil
+	t.data.Store(s, payload.Exp)
+	return s, nil
 }
 
 // 验证token
@@ -100,9 +100,9 @@ func (t *JwtUtils) VerificationToken(jwt string) bool {
 		return false
 	}
 
-	end_time,_ := strconv.Atoi(payload.Exp)
-	star_time,_ := strconv.Atoi(payload.Nbf)
-	now_time,_ := strconv.Atoi(TimeGetNowTimeStr())
+	end_time, _ := strconv.Atoi(payload.Exp)
+	star_time, _ := strconv.Atoi(payload.Nbf)
+	now_time, _ := strconv.Atoi(TimeGetNowTimeStr())
 
 	if now_time < end_time && now_time > star_time {
 		return true
@@ -113,19 +113,18 @@ func (t *JwtUtils) VerificationToken(jwt string) bool {
 
 // 验证token从缓存中
 func (t *JwtUtils) VerificationTokenByData(jwt string) bool {
-	if value, ok := t.data.Load(jwt);ok != true {
+	if value, ok := t.data.Load(jwt); ok != true {
 		return false
-	}else {
+	} else {
 		s := value.(string)
-		end_time,_ := strconv.Atoi(s)
-		now_time,_ := strconv.Atoi(TimeGetNowTimeStr())
+		end_time, _ := strconv.Atoi(s)
+		now_time, _ := strconv.Atoi(TimeGetNowTimeStr())
 
 		if now_time > end_time {
 			t.data.Delete(jwt)
 			return false
-		}else{
+		} else {
 			return true
 		}
 	}
 }
-

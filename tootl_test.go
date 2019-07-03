@@ -127,17 +127,16 @@ func TestNewUtilsToken(t *testing.T) {
 	jwt := NewUtilsToken(priKey, pubKey)
 
 	head := &JwtHeader{
-		Alg:"alg",
-		Type:"rsa256",
+		Alg:  "alg",
+		Type: "rsa256",
 	}
 
 	i, _ := strconv.Atoi(TimeGetNowTimeStr())
 	exp := strconv.Itoa(i + 60*60*6)
 
-
 	payload := &JwtPayload{
-		Exp:exp,
-		Nbf:TimeGetNowTimeStr(),
+		Exp: exp,
+		Nbf: TimeGetNowTimeStr(),
 	}
 
 	s, e := jwt.GeneraJwtToken(head, payload)
