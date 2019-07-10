@@ -8,7 +8,8 @@ easyutils Golang 常用工具库
 ├── README.md
 ├── session.go 简单的session
 ├── simpleTime.go  时间相关
-├── tootl_test.go 测试 
+├── tootl_test.go 测试
+├── reptile.go 爬虫 
 └── uuid.go  uuid
 ```
 
@@ -164,4 +165,14 @@ easyutils Golang 常用工具库
 - 验证JWT 缓存版本
     ``` 
     bool := jwt.VerificationTokenByData(s)
+    ```
+    
+### 爬虫包
+- 获取普通浏览器 UserAgent
+    ``` 
+    userAgent := ReptileGetUserAgent()
+    ```
+- 伪装搜索引擎 UserAgent
+    ``` 
+    userAgent := ReptileGetSpiderAgent()
     ```
