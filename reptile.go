@@ -49,3 +49,42 @@ func ReptileGetSpiderAgent() string {
 	intn := rand.Intn(len(spiderAgent))
 	return spiderAgent[intn]
 }
+
+// 请求
+func ReptileRequestFrom(targerUrl string,body io.Reader,cookies []*http.Cookie) (*http.Response,error) {
+	httpClient := &http.Client{}
+	if body != nil {
+		request, e := http.NewRequest("POST", targerUrl, body)
+		if e != nil {
+			return nil,e
+		}
+		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+		request.Header.Set("User-Agent",ReptileGetSpiderAgent())
+		if cookies != nil {
+			for _,v := range cookies {
+				request.AddCookie(v)
+			}
+		}
+		response, e := httpClient.Do(request)
+		if e != nil {
+			return nil,e
+		}
+		return response,e
+	}else {
+		request, e := http.NewRequest("GET", targerUrl, nil)
+		if e != nil {
+			return nil,e
+		}
+		request.Header.Set("User-Agent",ReptileGetSpiderAgent())
+		if cookies != nil {
+			for _,v := range cookies {
+				request.AddCookie(v)
+			}
+		}
+		response, e := httpClient.Do(request)
+		if e != nil {
+			return nil,e
+		}
+		return response,e
+	}
+}
