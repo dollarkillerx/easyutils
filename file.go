@@ -12,6 +12,7 @@ import (
 	"encoding/hex"
 	"errors"
 	"io"
+	"io/ioutil"
 	"math/rand"
 	"os"
 	"path/filepath"
@@ -91,4 +92,36 @@ func FielGetSize(filename string) int64 {
 		return nil
 	})
 	return result
+}
+
+// 保存文件 并从命名 Simple 版本
+// return: NewName,error
+func FileSaveRenameSimple(name string, data []byte, path string) (string, error) {
+	// 判断文件夹是否存在,如果不存在则创建
+	b, e := PathExists(path)
+	if e != nil {
+		return "", e
+	}
+	if !b {
+		e := DirPing(path)
+		if e != nil {
+			return "", e
+		}
+	}
+
+	// 获得文件名称
+	s, e := FileGetPostfix(name)
+	if e != nil {
+		return "", e
+	}
+	randomName := FileGetRandomName(s)
+	// 写入
+	newPath := path + "/" + randomName
+
+	e = ioutil.WriteFile(newPath, data, 00666)
+	if e != nil {
+		return "", e
+	}
+
+	return randomName, nil
 }
