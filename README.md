@@ -176,3 +176,11 @@ easyutils Golang 常用工具库
     ``` 
     userAgent := ReptileGetSpiderAgent()
     ```
+- 模拟搜索引擎发送请求
+    ``` 
+    ReptileRequestFrom(targerUrl string,body io.Reader,cookies []*http.Cookie) (*http.Response,error)
+    ```
+- 模拟浏览器获得下载文件 Simple版本
+    ```
+    ReptileDownloadSimple(targerUrl string,cookies []*http.Cookie) ([]byte,error)
+    ```

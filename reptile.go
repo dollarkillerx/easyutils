@@ -7,7 +7,10 @@
 package utils
 
 import (
+	"io"
+	"io/ioutil"
 	"math/rand"
+	"net/http"
 	"time"
 )
 
@@ -87,4 +90,31 @@ func ReptileRequestFrom(targerUrl string,body io.Reader,cookies []*http.Cookie) 
 		}
 		return response,e
 	}
+}
+
+// 文件下载
+func ReptileDownloadSimple(targerUrl string,cookies []*http.Cookie) ([]byte,error) {
+	httpClient := &http.Client{}
+	request, e := http.NewRequest("GET", targerUrl, nil)
+	if e != nil {
+		return nil,e
+	}
+	request.Header.Set("User-Agent",ReptileGetUserAgent())
+	if cookies != nil {
+		for _,v := range cookies {
+			request.AddCookie(v)
+		}
+	}
+	response, e := httpClient.Do(request)
+	if e != nil {
+		return nil,e
+	}
+
+	bytes, e := ioutil.ReadAll(response.Body)
+	defer response.Body.Close()
+	if e != nil {
+		return nil,e
+	}
+
+	return bytes,e
 }
