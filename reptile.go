@@ -1,8 +1,8 @@
 /**
 * Created by GoLand
 * User: dollarkiller
-* Date: 19-7-10
-* Time: 下午4:51
+* Date: 19-7-9
+* Time: 下午6:10
 * */
 package utils
 
@@ -11,10 +11,10 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"net/http"
+	"strings"
 	"time"
 )
 
-// 用户agent
 var userAgentList = []string{"Mozilla/5.0 (compatible, MSIE 10.0, Windows NT, DigExt)",
 	"Mozilla/4.0 (compatible, MSIE 7.0, Windows NT 5.1, 360SE)",
 	"Mozilla/4.0 (compatible, MSIE 8.0, Windows NT 6.0, Trident/4.0)",
@@ -54,67 +54,85 @@ func ReptileGetSpiderAgent() string {
 }
 
 // 请求
-func ReptileRequestFrom(targerUrl string,body io.Reader,cookies []*http.Cookie) (*http.Response,error) {
+func ReptileRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error) {
+	targerUrl = strings.TrimSpace(targerUrl)
 	httpClient := &http.Client{}
 	if body != nil {
 		request, e := http.NewRequest("POST", targerUrl, body)
 		if e != nil {
-			return nil,e
+			return nil, e
 		}
 		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-		request.Header.Set("User-Agent",ReptileGetSpiderAgent())
+		request.Header.Set("User-Agent", ReptileGetSpiderAgent())
 		if cookies != nil {
-			for _,v := range cookies {
+			for _, v := range cookies {
 				request.AddCookie(v)
 			}
 		}
 		response, e := httpClient.Do(request)
 		if e != nil {
-			return nil,e
+			return nil, e
 		}
-		return response,e
-	}else {
+		return response, e
+	} else {
 		request, e := http.NewRequest("GET", targerUrl, nil)
 		if e != nil {
-			return nil,e
+			return nil, e
 		}
-		request.Header.Set("User-Agent",ReptileGetSpiderAgent())
+		request.Header.Set("User-Agent", ReptileGetSpiderAgent())
 		if cookies != nil {
-			for _,v := range cookies {
+			for _, v := range cookies {
 				request.AddCookie(v)
 			}
 		}
 		response, e := httpClient.Do(request)
 		if e != nil {
-			return nil,e
+			return nil, e
 		}
-		return response,e
+		return response, e
 	}
 }
 
 // 文件下载
-func ReptileDownloadSimple(targerUrl string,cookies []*http.Cookie) ([]byte,error) {
+func ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie) ([]byte, error) {
+	targerUrl = strings.TrimSpace(targerUrl)
 	httpClient := &http.Client{}
 	request, e := http.NewRequest("GET", targerUrl, nil)
 	if e != nil {
-		return nil,e
+		return nil, e
 	}
-	request.Header.Set("User-Agent",ReptileGetUserAgent())
+	request.Header.Set("User-Agent", ReptileGetUserAgent())
 	if cookies != nil {
-		for _,v := range cookies {
+		for _, v := range cookies {
 			request.AddCookie(v)
 		}
 	}
 	response, e := httpClient.Do(request)
 	if e != nil {
-		return nil,e
+		return nil, e
 	}
 
 	bytes, e := ioutil.ReadAll(response.Body)
 	defer response.Body.Close()
 	if e != nil {
-		return nil,e
+		return nil, e
 	}
 
-	return bytes,e
+	return bytes, e
+}
+
+// 文件下载并保存
+// 目标地址,cookies,文件名称,新路径
+func ReptileDownloadAndSaveSimple(targerUrl string, cookies []*http.Cookie,name,path string) (string,error) {
+	bytes, e := ReptileDownloadSimple(targerUrl, cookies)
+	if e != nil {
+		return "", e
+	}
+
+	s, e := FileSaveRenameSimple(name, bytes, path)
+	if e != nil {
+		return "",e
+	}
+
+	return s,e
 }

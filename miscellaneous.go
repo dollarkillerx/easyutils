@@ -77,8 +77,8 @@ func GetFullChinaName() string {
 		"宗", "曼", "紫", "逸", "贤", "蝶", "菡", "绿", "蓝", "儿", "翠", "烟", "小", "轩"}
 	var lastNameLen = len(lastName)
 	var firstNameLen = len(firstName)
-	rand.Seed(time.Now().UnixNano()) //设置随机数种子
-	var first string                 //名
+	rand.Seed(time.Now().UnixNano())     //设置随机数种子
+	var first string                     //名
 	for i := 0; i <= rand.Intn(1); i++ { //随机产生2位或者3位的名
 		first = fmt.Sprint(firstName[rand.Intn(firstNameLen-1)])
 	}

@@ -8,9 +8,7 @@ easyutils Golang 常用工具库
 ├── README.md
 ├── session.go 简单的session
 ├── simpleTime.go  时间相关
-├── tootl_test.go 测试
-├── reptile.go 爬虫 
-├── miscellaneous.go 杂项
+├── tootl_test.go 测试 
 └── uuid.go  uuid
 ```
 
@@ -118,6 +116,7 @@ easyutils Golang 常用工具库
     SessionDel(session)
     ```
     
+    
 ### file包
 - 判断文件夹是否存在
     ``` 
@@ -143,10 +142,7 @@ easyutils Golang 常用工具库
     ``` 
     str := FileGetMD5(file *os.File)
     ```
-- 简单保存文件 返回随机名称(几乎不会重复,当目录文件夹存在会自行创建)
-    ``` 
-    FileSaveRenameSimple(name string, data []byte, path string) (string, error)
-    ```
+    
 ### Token
 - 初始化
     ``` 
@@ -168,33 +164,4 @@ easyutils Golang 常用工具库
 - 验证JWT 缓存版本
     ``` 
     bool := jwt.VerificationTokenByData(s)
-    ```
-    
-### 简单爬虫包   (未来会出一个高级包,参考scrapy)
-- 获取 随机 普通浏览器 UserAgent
-    ``` 
-    userAgent := ReptileGetUserAgent()
-    ```
-- 伪装 随机 搜索引擎 UserAgent
-    ``` 
-    userAgent := ReptileGetSpiderAgent()
-    ```
-- 模拟搜索引擎发送请求
-    ``` 
-    ReptileRequestFrom(targerUrl string,body io.Reader,cookies []*http.Cookie) (*http.Response,error)
-    ```
-- 模拟浏览器获得下载文件 Simple版本
-    ```
-    ReptileDownloadSimple(targerUrl string,cookies []*http.Cookie) ([]byte,error)
-    ```
-        
-        
-### 杂项 
-- 过滤HTML元素  
-    ``` 
-    TrimHtml(src string) string
-    ```
-- 随机中文名
-    ``` 
-    GetFullChinaName() string
     ```

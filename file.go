@@ -57,7 +57,7 @@ func FileGetPostfix(filename string) (string, error) {
 	return split[len(split)-1], nil
 }
 
-// 获得随机文件名 传入postfilx后缀
+// 获得随机文件名 传入postfilx后缀 几乎不会重复
 func FileGetRandomName(postfilx string) string {
 	nano := time.Now().UnixNano()
 	intn := rand.Intn(10000)
@@ -98,17 +98,10 @@ func FielGetSize(filename string) int64 {
 // return: NewName,error
 func FileSaveRenameSimple(name string, data []byte, path string) (string, error) {
 	// 判断文件夹是否存在,如果不存在则创建
-	b, e := PathExists(path)
+	e := DirPing(path)
 	if e != nil {
 		return "", e
 	}
-	if !b {
-		e := DirPing(path)
-		if e != nil {
-			return "", e
-		}
-	}
-
 	// 获得文件名称
 	s, e := FileGetPostfix(name)
 	if e != nil {
