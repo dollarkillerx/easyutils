@@ -118,3 +118,22 @@ func FileSaveRenameSimple(name string, data []byte, path string) (string, error)
 
 	return randomName, nil
 }
+
+// 保存文件
+// return error
+func FileSaveSimple(name string, data []byte, path string) error {
+	// 判断文件夹是否存在,如果不存在则创建
+	e := DirPing(path)
+	if e != nil {
+		return e
+	}
+
+	newPath := path + "/" + name
+
+	e = ioutil.WriteFile(newPath, data, 00666)
+	if e != nil {
+		return e
+	}
+
+	return nil
+}

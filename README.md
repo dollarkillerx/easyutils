@@ -142,7 +142,14 @@ easyutils Golang 常用工具库
     ``` 
     str := FileGetMD5(file *os.File)
     ```
-    
+- 保存文件 并从命名 Simple 版本
+    ``` 
+    FileSaveRenameSimple(name string, data []byte, path string) (string, error)
+    ```
+- 保存文件 Simple版本
+    ``` 
+    FileSaveSimple(name string, data []byte, path string) error 
+    ```
 ### Token
 - 初始化
     ``` 
