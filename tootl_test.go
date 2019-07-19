@@ -1,6 +1,5 @@
 package easyutils
 
-
 import (
 	"strconv"
 	"strings"

@@ -1,6 +1,5 @@
 package easyutils
 
-
 import (
 	"crypto"
 	"crypto/md5"

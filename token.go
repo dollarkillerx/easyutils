@@ -6,7 +6,6 @@
 * */
 package easyutils
 
-
 import (
 	"encoding/json"
 	"strconv"

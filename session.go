@@ -6,7 +6,6 @@
 * */
 package easyutils
 
-
 import (
 	"errors"
 	"math/rand"

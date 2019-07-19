@@ -6,7 +6,6 @@
 * */
 package easyutils
 
-
 import (
 	"io"
 	"io/ioutil"
@@ -124,7 +123,7 @@ func ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie) ([]byte, er
 
 // 文件下载并保存
 // 目标地址,cookies,文件名称,新路径
-func ReptileDownloadAndSaveSimple(targerUrl string, cookies []*http.Cookie,name,path string) (string,error) {
+func ReptileDownloadAndSaveSimple(targerUrl string, cookies []*http.Cookie, name, path string) (string, error) {
 	bytes, e := ReptileDownloadSimple(targerUrl, cookies)
 	if e != nil {
 		return "", e
@@ -132,8 +131,8 @@ func ReptileDownloadAndSaveSimple(targerUrl string, cookies []*http.Cookie,name,
 
 	s, e := FileSaveRenameSimple(name, bytes, path)
 	if e != nil {
-		return "",e
+		return "", e
 	}
 
-	return s,e
+	return s, e
 }

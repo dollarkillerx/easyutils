@@ -6,7 +6,6 @@
 * */
 package easyutils
 
-
 import (
 	"crypto/md5"
 	"crypto/sha1"
