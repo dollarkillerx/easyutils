@@ -4,7 +4,7 @@
 * Date: 19-7-17
 * Time: 下午5:58
 * */
-package utils
+package easyutils
 // 重构
 // 采用 micro kernel 设计模式
 

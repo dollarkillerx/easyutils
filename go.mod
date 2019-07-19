@@ -1,3 +1,3 @@
-module github.com/dollarkillerx/easyutils
+module easyutils
 
 go 1.12

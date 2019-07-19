@@ -4,7 +4,8 @@
 * Date: 19-7-9
 * Time: 下午6:10
 * */
-package utils
+package easyutils
+
 
 import (
 	"io"

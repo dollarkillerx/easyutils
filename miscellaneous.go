@@ -4,7 +4,8 @@
 * Date: 19-7-11
 * Time: 上午11:08
 * */
-package utils
+package easyutils
+
 
 import (
 	"fmt"

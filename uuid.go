@@ -1,4 +1,5 @@
-package utils
+package easyutils
+
 
 import (
 	"fmt"

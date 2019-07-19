@@ -4,7 +4,8 @@
 * Date: 19-7-3
 * Time: 下午8:47
 * */
-package utils
+package easyutils
+
 
 import (
 	"encoding/json"

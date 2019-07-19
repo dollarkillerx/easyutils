@@ -4,7 +4,8 @@
 * Date: 19-6-9
 * Time: 下午12:08
 * */
-package utils
+package easyutils
+
 
 import (
 	"errors"

@@ -4,7 +4,8 @@
 * Date: 19-6-12
 * Time: 上午11:53
 * */
-package utils
+package easyutils
+
 
 import (
 	"crypto/md5"
