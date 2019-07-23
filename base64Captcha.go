@@ -56,11 +56,6 @@ func GetCaptchaConfig() *CaptchaConfig {
 	return captchaConfig
 }
 
-const (
-	CAPTCHA_IS_RIGHT = 0
-	CAPTCHA_IS_ERROR = -7
-)
-
 //@获取验证码
 func CaptchaGeneratePng() (captchaId, base64Png string) {
 	captchaConfig := GetCaptchaConfig()
@@ -76,12 +71,12 @@ func CaptchaGeneratePng() (captchaId, base64Png string) {
 
 //@验证验证码是否正确
 // captchaId verifyValue 用户输入
-func CaptchaCheck(captchaId, verifyValue string) (int, error) {
+func CaptchaCheck(captchaId, verifyValue string) (bool, error) {
 	verifyResult := base64Captcha.VerifyCaptcha(captchaId, verifyValue)
 	if verifyResult {
-		return CAPTCHA_IS_RIGHT, nil
+		return true, nil
 	} else {
-		return CAPTCHA_IS_ERROR, fmt.Errorf("captcha is error")
+		return false, fmt.Errorf("captcha is error")
 	}
 }
 
@@ -111,10 +106,6 @@ func CaptchaCheck(captchaId, verifyValue string) (int, error) {
 //		return CAPTCHA_IS_ERROR, fmt.Errorf("captcha is error")
 //	}
 //}
-
-
-
-
 
 ////@获取验证码
 //func CaptchaGeneratePng() (captchaId, base64Png string) {
