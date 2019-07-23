@@ -1,6 +1,8 @@
 package easyutils
 
 import (
+	"fmt"
+	"log"
 	"strconv"
 	"strings"
 	"testing"
@@ -147,6 +149,37 @@ func TestNewUtilsToken(t *testing.T) {
 	bool := jwt.VerificationToken(s)
 	if bool != true {
 		t.Logf("true")
+	}
+
+}
+
+func TestCheckCaptcha1(t *testing.T) {
+	captchaId, base64Png := CaptchaGeneratePng()
+	fmt.Println(captchaId)
+	fmt.Println(base64Png)
+	var key string
+	_, err := fmt.Scanln(&key)
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	i, e := CaptchaCheck(captchaId, key)
+	if e != nil {
+		log.Println(e.Error())
+		log.Println(i)
+	} else {
+		log.Println(i)
+	}
+}
+
+func TestCheckCaptcha2(t *testing.T) {
+	key := "0EvRS72gtk23T1s4KDZG/n"
+	i, e := CaptchaCheck(key, "10989")
+	if e != nil {
+		log.Println(e.Error())
+		log.Println(i)
+	} else {
+		log.Println(i)
 	}
 
 }

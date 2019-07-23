@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9cfc01a-e7f7-401e-acf9-59a6074ee6ee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/base64Captcha.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tootl_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/tootl_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,98 +18,115 @@
     <option name="myElementSize" value="355" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/session.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/go.mod">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="41" selection-start-column="41" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/new_session.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/miscellaneous.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tootl_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/uuid.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/token.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/file.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reptile.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simpleTime.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5556254">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/go.mod">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="41" selection-start-column="41" selection-end-column="41" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/README.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+                <state split_layout="FIRST">
+                  <first_editor relative-caret-position="579">
+                    <caret line="176" column="4" selection-start-line="176" selection-start-column="4" selection-end-line="176" selection-end-column="42" />
+                  </first_editor>
+                  <second_editor />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/base64Captcha.go">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="246">
+                  <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+                  <folding>
+                    <element signature="e#100#160#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/tootl_test.go">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="338">
+                  <caret line="168" column="22" lean-forward="true" selection-start-line="168" selection-start-column="22" selection-end-line="168" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/uuid.go">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="322">
+                  <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/token.go">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="161">
+                  <caret line="7" selection-start-line="7" selection-end-line="7" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/file.go">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="161">
+                  <caret line="7" selection-start-line="7" selection-end-line="7" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/reptile.go">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="161">
+                  <caret line="7" selection-start-line="7" selection-end-line="7" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/simpleTime.go">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="23">
+                  <caret line="1" selection-start-line="1" selection-end-line="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/README.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+                <state split_layout="FIRST">
+                  <first_editor relative-caret-position="344">
+                    <caret line="176" column="22" selection-start-line="176" selection-start-column="22" selection-end-line="176" selection-end-column="22" />
+                  </first_editor>
+                  <second_editor />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -122,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/new_session.go" />
         <option value="$PROJECT_DIR$/crypto.go" />
@@ -132,17 +151,20 @@
         <option value="$PROJECT_DIR$/session.go" />
         <option value="$PROJECT_DIR$/simpleTime.go" />
         <option value="$PROJECT_DIR$/token.go" />
-        <option value="$PROJECT_DIR$/tootl_test.go" />
         <option value="$PROJECT_DIR$/uuid.go" />
         <option value="$PROJECT_DIR$/go.mod" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/base64Captcha.go" />
+        <option value="$PROJECT_DIR$/tootl_test.go" />
+        <option value="$PROJECT_DIR$/test_main/one.go" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="55" />
-    <option name="y" value="65" />
+    <option name="x" value="925" />
+    <option name="y" value="86" />
     <option name="width" value="1717" />
-    <option name="height" value="939" />
+    <option name="height" value="941" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -198,27 +220,47 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestNewUtilsToken in easyutils">
-    <configuration name="TestGenRsaKey in easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.go build one.go">
+    <configuration name="go build one.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="easyutils" />
       <working_directory value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="easyutils" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/test_main/one.go" />
+      <package value="github.com/dollarkillerx/easyutils" />
       <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestGenRsaKey$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestGetSession in easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestCheckCaptcha in github.com/dollarkillerx/easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="easyutils" />
       <working_directory value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="easyutils" />
+      <package value="github.com/dollarkillerx/easyutils" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestGetSession$" />
+      <pattern value="^TestCheckCaptcha$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestCheckCaptcha1 in github.com/dollarkillerx/easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="easyutils" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/dollarkillerx/easyutils" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestCheckCaptcha1$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestCheckCaptcha2 in github.com/dollarkillerx/easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="easyutils" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/dollarkillerx/easyutils" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestCheckCaptcha2$" />
       <method v="2" />
     </configuration>
     <configuration name="TestNewUtilsToken in easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -232,80 +274,58 @@
       <pattern value="^TestNewUtilsToken$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestRsaDecryptSimple in easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="easyutils" />
-      <working_directory value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="easyutils" />
-      <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestRsaDecryptSimple$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestRsaSign in easyutils" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="easyutils" />
-      <working_directory value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="easyutils" />
-      <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestRsaSign$" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build one.go" />
+        <item itemvalue="Go Test.TestCheckCaptcha1 in github.com/dollarkillerx/easyutils" />
+        <item itemvalue="Go Test.TestCheckCaptcha2 in github.com/dollarkillerx/easyutils" />
+        <item itemvalue="Go Test.TestCheckCaptcha in github.com/dollarkillerx/easyutils" />
         <item itemvalue="Go Test.TestNewUtilsToken in easyutils" />
-        <item itemvalue="Go Test.TestRsaDecryptSimple in easyutils" />
-        <item itemvalue="Go Test.TestRsaSign in easyutils" />
-        <item itemvalue="Go Test.TestGenRsaKey in easyutils" />
-        <item itemvalue="Go Test.TestGetSession in easyutils" />
       </list>
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 57m 58s.xml">
-      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestCheckCaptcha1_in_github_com_dollarkillerx_easyutils - 2019.07.23 at 16h 17m 46s.xml">
+      <configuration name="TestCheckCaptcha1 in github.com/dollarkillerx/easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 02s.xml">
-      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestCheckCaptcha2_in_github_com_dollarkillerx_easyutils - 2019.07.23 at 16h 18m 34s.xml">
+      <configuration name="TestCheckCaptcha2 in github.com/dollarkillerx/easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 08s.xml">
-      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestCheckCaptcha1_in_github_com_dollarkillerx_easyutils - 2019.07.23 at 16h 25m 44s.xml">
+      <configuration name="TestCheckCaptcha1 in github.com/dollarkillerx/easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 15s.xml">
-      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestCheckCaptcha2_in_github_com_dollarkillerx_easyutils - 2019.07.23 at 16h 26m 29s.xml">
+      <configuration name="TestCheckCaptcha2 in github.com/dollarkillerx/easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 20s.xml">
-      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestCheckCaptcha1_in_github_com_dollarkillerx_easyutils - 2019.07.23 at 16h 29m 58s.xml">
+      <configuration name="TestCheckCaptcha1 in github.com/dollarkillerx/easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 27s.xml">
-      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestCheckCaptcha2_in_github_com_dollarkillerx_easyutils - 2019.07.23 at 16h 31m 15s.xml">
+      <configuration name="TestCheckCaptcha2 in github.com/dollarkillerx/easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 31s.xml">
-      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestCheckCaptcha2_in_github_com_dollarkillerx_easyutils - 2019.07.23 at 16h 32m 31s.xml">
+      <configuration name="TestCheckCaptcha2 in github.com/dollarkillerx/easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 36s.xml">
-      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestCheckCaptcha1_in_github_com_dollarkillerx_easyutils - 2019.07.23 at 16h 36m 50s.xml">
+      <configuration name="TestCheckCaptcha1 in github.com/dollarkillerx/easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestRsaDecryptSimple_in_easyutils - 2019.06.25 at 10h 58m 39s.xml">
-      <configuration name="TestRsaDecryptSimple in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestCheckCaptcha1_in_github_com_dollarkillerx_easyutils - 2019.07.23 at 16h 42m 49s.xml">
+      <configuration name="TestCheckCaptcha1 in github.com/dollarkillerx/easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestNewUtilsToken_in_easyutils - 2019.07.03 at 21h 50m 17s.xml">
-      <configuration name="TestNewUtilsToken in easyutils" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestCheckCaptcha1_in_github_com_dollarkillerx_easyutils - 2019.07.23 at 16h 43m 05s.xml">
+      <configuration name="TestCheckCaptcha1 in github.com/dollarkillerx/easyutils" configurationId="GoTestRunConfiguration" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12929185" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14645922" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.28094727" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2802198" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -313,7 +333,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.30769232" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.30989012" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Statistic" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -345,16 +365,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="3450">
-            <caret line="150" column="64" selection-start-line="150" selection-start-column="64" selection-end-line="150" selection-end-column="64" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -390,20 +400,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miscellaneous.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tootl_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -446,6 +442,57 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="41" selection-start-column="41" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miscellaneous.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-253">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="579">
+            <caret line="176" column="4" selection-start-line="176" selection-start-column="4" selection-end-line="176" selection-end-column="42" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/GOPATH/pkg/mod/github.com/mojocn/base64!captcha@v0.0.0-20190716153509-e5e80f1b3816/captcha.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="91" column="22" lean-forward="true" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base64Captcha.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+          <folding>
+            <element signature="e#100#160#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_main/one.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+          <folding>
+            <element signature="e#95#150#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tootl_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="168" column="22" lean-forward="true" selection-start-line="168" selection-start-column="22" selection-end-line="168" selection-end-column="22" />
         </state>
       </provider>
     </entry>
