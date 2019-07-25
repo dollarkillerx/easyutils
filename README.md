@@ -2,19 +2,26 @@
 easyutils Golang 常用工具库
 ``` 
 .
-├── crypto.go  加密解密相关
-├── go.mod
 ├── LICENSE
 ├── README.md
-├── session.go 简单的session
-├── simpleTime.go  时间相关
-├── tootl_test.go 测试 
-└── uuid.go  uuid
+├── base64Captcha.go 验证码
+├── crypto.go 加密解密相关
+├── file.go 文件相关
+├── go.mod
+├── go.sum
+├── miscellaneous.go 杂项
+├── new_session.go session相关 新(开发中)
+├── reptile.go 爬虫相关
+├── session.go session相关 旧
+├── simpleTime.go 时间相关
+├── test 测试
+│   └── tootl_test.go
+├── token.go token相关
+└── uuid.go uuid相关
 ```
 
 把生活和工作当中常用的东西抽离出来
 严格单元测试 保证代码质量
-献丑了
 
 ## 简单用法
 ### crypto加密包
@@ -174,7 +181,19 @@ easyutils Golang 常用工具库
     ```
     
 ### 验证码  是对base64Captcha包装 
-- 获取验证码Png
-    `CaptchaGeneratePng() (captchaId,base64Png string)` 
-- 验证验证码
-    `CaptchaCheck(captchaId, verifyValue string) (int, error)`
+- 获取数字验证码
+    ``` 
+    CaptchaNum() (captchaId, base64Png string)
+    ```
+- 获取算数验证码
+    ```
+    CaptchaMath() (captchaId, base64Png string)
+    ```
+- 获取音频验证码
+    ```
+    CaptchaMP3() (captchaId, base64MP3 string)
+    ```
+- 验证
+    ```
+    CaptchaCheck(captchaId, verifyValue string) (int, error)
+    ```
