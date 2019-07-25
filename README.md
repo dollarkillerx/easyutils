@@ -173,9 +173,7 @@ easyutils Golang 常用工具库
     bool := jwt.VerificationTokenByData(s)
     ```
     
-### 验证码部分是对base64Captcha包装
-`go get -u github.com/mojocn/base64Captcha`
-
+### 验证码  是对base64Captcha包装 
 - 获取验证码Png
     `CaptchaGeneratePng() (captchaId,base64Png string)` 
 - 验证验证码
