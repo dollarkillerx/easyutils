@@ -24,6 +24,12 @@ easyutils Golang 常用工具库
 严格单元测试 保证代码质量
 
 ## 简单用法
+
+### 获取
+``` 
+go get github.com/dollarkillerx/easyutils
+```
+
 ### crypto加密包
 - 把str转为md5
     ``` 
