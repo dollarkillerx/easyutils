@@ -19,6 +19,13 @@ func TimeGetNowTimeStr() string {
 	return fmt.Sprintf("%v", unix)
 }
 
+// 获取当前时间
+func TimeGetNowTime() int {
+	str := TimeGetNowTimeStr()
+	i, _ := strconv.Atoi(str)
+	return i
+}
+
 // 时间戳转日期str
 func TimeGetTimeToString(times string) (string, error) {
 	i, err := strconv.ParseInt(times, 10, 64)
