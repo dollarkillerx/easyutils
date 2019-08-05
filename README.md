@@ -203,3 +203,9 @@ go get github.com/dollarkillerx/easyutils
     ```
     CaptchaCheck(captchaId, verifyValue string) (int, error)
     ```
+    
+### 杂项
+- 获取区间随机数
+    ``` 
+    Random(min,max int) int
+    ```

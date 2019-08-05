@@ -181,5 +181,13 @@ func TestCheckCaptcha2(t *testing.T) {
 	} else {
 		log.Println(i)
 	}
+}
+
+
+func TestRand(t *testing.T) {
+	for i:=0;i<10;i++{
+		random := easyutils.Random(30, 100)
+		t.Log(random)
+	}
 
 }

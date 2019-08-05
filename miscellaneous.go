@@ -85,3 +85,9 @@ func GetFullChinaName() string {
 	//返回姓名
 	return fmt.Sprintf("%s%s", fmt.Sprint(lastName[rand.Intn(lastNameLen-1)]), first)
 }
+
+// 获取区间内随机数
+func Random(min,max int) int {
+	rand.Seed(time.Now().UnixNano())
+	return rand.Intn(max-min) + min
+}
