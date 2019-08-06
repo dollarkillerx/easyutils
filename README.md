@@ -209,3 +209,17 @@ go get github.com/dollarkillerx/easyutils
     ``` 
     Random(min,max int) int
     ```
+- 计算offset
+    ``` 
+    OffsetMath(page,limit int) int 
+    ```
+    
+### LayUi 兼容
+- 分页
+    - 分页包装数据
+        ```
+        LayPage(count int,data interface{}) *LayUiPage
+        ```
+    - 接受用户传入结构体
+    - 发送结构体
+    - 默认定义 空数据 雨 数据异常发送模板

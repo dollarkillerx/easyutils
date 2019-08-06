@@ -91,3 +91,10 @@ func Random(min,max int) int {
 	rand.Seed(time.Now().UnixNano())
 	return rand.Intn(max-min) + min
 }
+
+// 计算分页offset
+func OffsetMath(page,limit int) int {
+	offset := (page - 1) * limit
+	return offset
+}
+
