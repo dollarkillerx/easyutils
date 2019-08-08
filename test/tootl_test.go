@@ -183,11 +183,31 @@ func TestCheckCaptcha2(t *testing.T) {
 	}
 }
 
-
 func TestRand(t *testing.T) {
-	for i:=0;i<10;i++{
+	for i := 0; i < 10; i++ {
 		random := easyutils.Random(30, 100)
 		t.Log(random)
 	}
 
+}
+
+
+// easy token 测试
+func TestEasyToken(t *testing.T) {
+	payload := easyutils.EasyJwtPayload{}
+	payload.Msg = "1213"
+	payload.Iss = "dollarkiller"
+
+	s, e := easyutils.EasyJwtGeneraToken(&payload, 1)
+	if e != nil {
+		t.Fatal(e.Error())
+	}
+
+	t.Log(s)
+	// 验证
+	e = easyutils.EasyJwtVerification(s)
+	if e != nil {
+		t.Fatal(e.Error())
+	}
+	t.Log("OK")
 }

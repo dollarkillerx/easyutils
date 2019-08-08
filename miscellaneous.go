@@ -87,14 +87,13 @@ func GetFullChinaName() string {
 }
 
 // 获取区间内随机数
-func Random(min,max int) int {
+func Random(min, max int) int {
 	rand.Seed(time.Now().UnixNano())
 	return rand.Intn(max-min) + min
 }
 
 // 计算分页offset
-func OffsetMath(page,limit int) int {
+func OffsetMath(page, limit int) int {
 	offset := (page - 1) * limit
 	return offset
 }
-
