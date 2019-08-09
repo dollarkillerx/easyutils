@@ -13,7 +13,7 @@ import (
 
 type EasyJwtPayload struct {
 	Iss  string      `json:"iss"` // 签发人
-	Exp  int      `json:"exp"` // 过期时间
+	Exp  int         `json:"exp"` // 过期时间
 	Msg  string      `json:"msg"` // 用户自义定数据
 	Data interface{} `json:"data"`
 }
@@ -27,7 +27,7 @@ type easyJwtUtils struct {
 
 var (
 	easyJwtUtil *easyJwtUtils
-	db_com *sync.Map
+	db_com      *sync.Map
 )
 
 func init() {
@@ -47,16 +47,16 @@ func init() {
 	db_com = &sync.Map{}
 }
 
-// 生成tooken
+// 生成token
 // 载荷
-func EasyJwtGeneraToken(data *EasyJwtPayload,hour int) (string,error) {
-	addtime := hour * 60 * 60 + TimeGetNowTime()
+func EasyJwtGeneraToken(data *EasyJwtPayload, hour int) (string, error) {
+	addtime := hour*60*60 + TimeGetNowTime()
 	data.Exp = addtime
 
 	payloadJson, e := json.Marshal(data)
 	if e != nil {
 		log.Println(e.Error())
-		return "",e
+		return "", e
 	}
 	payloadEnco := Base64Encode(payloadJson)
 	// 签名
@@ -68,11 +68,11 @@ func EasyJwtGeneraToken(data *EasyJwtPayload,hour int) (string,error) {
 
 	jwt := payloadEnco + "." + signature
 	// 存入内存中
-	easyJwtUtil.data.Store(jwt,data)
+	easyJwtUtil.data.Store(jwt, data)
 	// 将用户id 和 jwt 存入到通用存储中
-	db_com.Store(data.Iss,jwt)
+	db_com.Store(data.Iss, jwt)
 
-	return jwt,nil
+	return jwt, nil
 }
 
 // 验证签名
@@ -97,16 +97,16 @@ func EasyJwtVerification(jwt string) error {
 }
 
 // 验证用户是否已经登录
-func EasyJwtCheckUserLogin(email string) error {
+func EasyJwtCheckUserLogin(email string) (token string, err error) {
 	value, ok := db_com.Load(email)
 	if !ok {
-		return errors.New("not data")
+		return "", errors.New("not data")
 	}
-	token := value.(string)
+	token = value.(string)
 	// 验证token 是否有效
 	verification := EasyJwtVerification(token)
 	if verification != nil {
-		return errors.New("not login")
+		return "", errors.New("not login")
 	}
-	return nil
+	return token, nil
 }

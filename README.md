@@ -185,7 +185,20 @@ go get github.com/dollarkillerx/easyutils
     ``` 
     bool := jwt.VerificationTokenByData(s)
     ```
-    
+
+### EasyToken 
+- 生成token
+    ``` 
+    EasyJwtGeneraToken(data *EasyJwtPayload,hour int) (string,error)
+    ```
+- 验证签名
+    ``` 
+    EasyJwtVerification(jwt string) error
+    ```
+- 验证用户是否已经登录
+    ``` 
+    EasyJwtCheckUserLogin(email string) (token string,err error)
+    ```
 ### 验证码  是对base64Captcha包装 
 - 获取数字验证码
     ``` 

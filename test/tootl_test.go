@@ -191,7 +191,6 @@ func TestRand(t *testing.T) {
 
 }
 
-
 // easy token 测试
 func TestEasyToken(t *testing.T) {
 	payload := easyutils.EasyJwtPayload{}
