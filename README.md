@@ -75,13 +75,21 @@ go get github.com/dollarkillerx/easyutils
     ``` 
     RsaSignVerSimple(data,signature,publicKey string) error
     ```
-- Base64编码
+- Base64标准编码
     ``` 
     Base64Encode(data []byte) string
     ```
-- Base64解码
+- Base64标准解码
     ``` 
     Base64Decode(s string) ([]byte,error)
+    ```
+- Base64URL编码
+    ``` 
+    Base64URLEncode(data []byte) string
+    ```
+- Base64URL解码
+    ``` 
+    Base64URLDecode(s string) ([]byte,error)
     ```
     
     
@@ -236,3 +244,5 @@ go get github.com/dollarkillerx/easyutils
     - 接受用户传入结构体
     - 发送结构体
     - 默认定义 空数据 雨 数据异常发送模板
+    
+   

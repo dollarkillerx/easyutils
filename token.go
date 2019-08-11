@@ -59,7 +59,7 @@ func (t *JwtUtils) GeneraJwtToken(header *JwtHeader, payload *JwtPayload) (strin
 		return "", e
 	}
 
-	headerEnco := Base64Encode(headerJson)
+	headerEnco := Base64URLEncode(headerJson)
 	payloadEnco := Base64Encode(payloadJson)
 
 	head := headerEnco + "." + payloadEnco        // 头 + 载荷
