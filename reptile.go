@@ -53,8 +53,8 @@ func ReptileGetSpiderAgent() string {
 	return spiderAgent[intn]
 }
 
-// 请求
-func ReptileRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error) {
+// 请求 假装成 蜘蛛
+func ReptileSpiderRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error) {
 	targerUrl = strings.TrimSpace(targerUrl)
 	httpClient := &http.Client{}
 	if body != nil {
@@ -80,6 +80,46 @@ func ReptileRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie
 			return nil, e
 		}
 		request.Header.Set("User-Agent", ReptileGetSpiderAgent())
+		if cookies != nil {
+			for _, v := range cookies {
+				request.AddCookie(v)
+			}
+		}
+		response, e := httpClient.Do(request)
+		if e != nil {
+			return nil, e
+		}
+		return response, e
+	}
+}
+
+// 请求 假装成 用户
+func ReptileUserRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error) {
+	targerUrl = strings.TrimSpace(targerUrl)
+	httpClient := &http.Client{}
+	if body != nil {
+		request, e := http.NewRequest("POST", targerUrl, body)
+		if e != nil {
+			return nil, e
+		}
+		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+		request.Header.Set("User-Agent", ReptileGetUserAgent())
+		if cookies != nil {
+			for _, v := range cookies {
+				request.AddCookie(v)
+			}
+		}
+		response, e := httpClient.Do(request)
+		if e != nil {
+			return nil, e
+		}
+		return response, e
+	} else {
+		request, e := http.NewRequest("GET", targerUrl, nil)
+		if e != nil {
+			return nil, e
+		}
+		request.Header.Set("User-Agent", ReptileGetUserAgent())
 		if cookies != nil {
 			for _, v := range cookies {
 				request.AddCookie(v)
