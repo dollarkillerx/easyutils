@@ -246,27 +246,36 @@ go get github.com/dollarkillerx/easyutils
     - 默认定义 空数据 雨 数据异常发送模板
     
 ### 简单爬虫tools
+- 初始化
+    ``` 
+    // url,username,password
+    rep,err := InitProxy(arg ...string) (*ProxySt, error)
+    ```
 - 获取随机UserAgent (假装自己是普通用户)
     ``` 
-    ReptileGetUserAgent() string
+    rep.ReptileGetUserAgent() string
     ```
 - 获取搜索引擎UserAgent (假装自己是搜索引擎)
     ``` 
-    ReptileGetSpiderAgent() string
+    rep.ReptileGetSpiderAgent() string
     ```
 - 发送请求 (假装自己是搜索引擎)
     ``` 
-    ReptileSpiderRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error)
+    rep.ReptileSpiderRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error)
     ```
 - 发送请求 (假装自己是普通用户)
     ``` 
-    ReptileUserRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error)
+    rep.ReptileUserRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error)
     ```
 - 文件下载
     ``` 
-    ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie) ([]byte, error)
+    rep.ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie) ([]byte, error)
     ```
 - 文件下载并保存
     ``` 
-    ReptileDownloadAndSaveSimple(targerUrl string, cookies []*http.Cookie, name, path string) (string, error)
+    rep.ReptileDownloadAndSaveSimple(targerUrl string, cookies []*http.Cookie, name, path string) (string, error)
+    ```
+- 验证代理是否可用
+    ``` 
+    rep.CheckProxy() error
     ```

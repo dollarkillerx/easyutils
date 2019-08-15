@@ -7,13 +7,65 @@
 package easyutils
 
 import (
+	"errors"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
+	"net/url"
 	"strings"
 	"time"
 )
+
+type ProxySt struct {
+	UserName    string
+	Password    string
+	ProxyServer string
+	proxyUrl    *url.URL
+}
+
+var proxyD *ProxySt
+
+// 初始化代理
+// url,username,password
+func InitProxy(arg ...string) (*ProxySt, error) {
+	if proxyD != nil {
+		return proxyD,nil
+	}else{
+		// 初始化
+		proxyData := &ProxySt{}
+		if len(arg) == 1 {
+			parse, e := url.Parse("http://" + arg[0])
+			if e != nil {
+				return nil, e
+			} else {
+				proxyData.proxyUrl = parse
+			}
+
+			proxyD = proxyData
+
+			return proxyData, nil
+		} else if len(arg) == 3 {
+			parse, e := url.Parse("http://" + arg[1] + ":" + arg[2] + "@" + arg[0])
+			if e != nil {
+				return nil, e
+			} else {
+				proxyData.proxyUrl = parse
+			}
+
+			proxyD = proxyData
+
+
+			return proxyData, nil
+		} else {
+
+			proxyD = proxyData
+
+			return proxyData, nil
+		}
+	}
+}
 
 var userAgentList = []string{"Mozilla/5.0 (compatible, MSIE 10.0, Windows NT, DigExt)",
 	"Mozilla/4.0 (compatible, MSIE 7.0, Windows NT 5.1, 360SE)",
@@ -31,7 +83,7 @@ var userAgentList = []string{"Mozilla/5.0 (compatible, MSIE 10.0, Windows NT, Di
 	"MQQBrowser/26 Mozilla/5.0 (Linux, U, Android 2.3.7, zh-cn, MB200 Build/GRJ22, CyanogenMod-7) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1"}
 
 // 获取随机UserAgent
-func ReptileGetUserAgent() string {
+func (p *ProxySt)ReptileGetUserAgent() string {
 	rand.Seed(time.Now().UnixNano())
 
 	intn := rand.Intn(len(userAgentList))
@@ -46,7 +98,7 @@ var spiderAgent = []string{
 }
 
 // 获取蜘蛛agent
-func ReptileGetSpiderAgent() string {
+func (p *ProxySt)ReptileGetSpiderAgent() string {
 	rand.Seed(time.Now().UnixNano())
 
 	intn := rand.Intn(len(spiderAgent))
@@ -54,16 +106,21 @@ func ReptileGetSpiderAgent() string {
 }
 
 // 请求 假装成 蜘蛛
-func ReptileSpiderRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error) {
+func (p *ProxySt) ReptileSpiderRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error) {
 	targerUrl = strings.TrimSpace(targerUrl)
-	httpClient := &http.Client{}
+	var httpClient *http.Client
+	if p != nil {
+		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
+	} else {
+		httpClient = &http.Client{}
+	}
 	if body != nil {
 		request, e := http.NewRequest("POST", targerUrl, body)
 		if e != nil {
 			return nil, e
 		}
 		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-		request.Header.Set("User-Agent", ReptileGetSpiderAgent())
+		request.Header.Set("User-Agent", p.ReptileGetSpiderAgent())
 		if cookies != nil {
 			for _, v := range cookies {
 				request.AddCookie(v)
@@ -79,7 +136,7 @@ func ReptileSpiderRequestFrom(targerUrl string, body io.Reader, cookies []*http.
 		if e != nil {
 			return nil, e
 		}
-		request.Header.Set("User-Agent", ReptileGetSpiderAgent())
+		request.Header.Set("User-Agent", p.ReptileGetSpiderAgent())
 		if cookies != nil {
 			for _, v := range cookies {
 				request.AddCookie(v)
@@ -94,16 +151,21 @@ func ReptileSpiderRequestFrom(targerUrl string, body io.Reader, cookies []*http.
 }
 
 // 请求 假装成 用户
-func ReptileUserRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error) {
+func (p *ProxySt) ReptileUserRequestFrom(targerUrl string, body io.Reader, cookies []*http.Cookie) (*http.Response, error) {
 	targerUrl = strings.TrimSpace(targerUrl)
-	httpClient := &http.Client{}
+	var httpClient *http.Client
+	if p != nil {
+		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
+	} else {
+		httpClient = &http.Client{}
+	}
 	if body != nil {
 		request, e := http.NewRequest("POST", targerUrl, body)
 		if e != nil {
 			return nil, e
 		}
 		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-		request.Header.Set("User-Agent", ReptileGetUserAgent())
+		request.Header.Set("User-Agent", p.ReptileGetUserAgent())
 		if cookies != nil {
 			for _, v := range cookies {
 				request.AddCookie(v)
@@ -119,7 +181,7 @@ func ReptileUserRequestFrom(targerUrl string, body io.Reader, cookies []*http.Co
 		if e != nil {
 			return nil, e
 		}
-		request.Header.Set("User-Agent", ReptileGetUserAgent())
+		request.Header.Set("User-Agent", p.ReptileGetUserAgent())
 		if cookies != nil {
 			for _, v := range cookies {
 				request.AddCookie(v)
@@ -134,14 +196,21 @@ func ReptileUserRequestFrom(targerUrl string, body io.Reader, cookies []*http.Co
 }
 
 // 文件下载
-func ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie) ([]byte, error) {
+func (p *ProxySt) ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie) ([]byte, error) {
 	targerUrl = strings.TrimSpace(targerUrl)
-	httpClient := &http.Client{}
+
+	var httpClient *http.Client
+	if p != nil {
+		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
+	} else {
+		httpClient = &http.Client{}
+	}
+
 	request, e := http.NewRequest("GET", targerUrl, nil)
 	if e != nil {
 		return nil, e
 	}
-	request.Header.Set("User-Agent", ReptileGetUserAgent())
+	request.Header.Set("User-Agent", p.ReptileGetUserAgent())
 	if cookies != nil {
 		for _, v := range cookies {
 			request.AddCookie(v)
@@ -163,8 +232,8 @@ func ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie) ([]byte, er
 
 // 文件下载并保存
 // 目标地址,cookies,文件名称,新路径
-func ReptileDownloadAndSaveSimple(targerUrl string, cookies []*http.Cookie, name, path string) (string, error) {
-	bytes, e := ReptileDownloadSimple(targerUrl, cookies)
+func (p *ProxySt) ReptileDownloadAndSaveSimple(targerUrl string, cookies []*http.Cookie, name, path string) (string, error) {
+	bytes, e := p.ReptileDownloadSimple(targerUrl, cookies)
 	if e != nil {
 		return "", e
 	}
@@ -175,4 +244,27 @@ func ReptileDownloadAndSaveSimple(targerUrl string, cookies []*http.Cookie, name
 	}
 
 	return s, e
+}
+
+// 验证代理是否可用
+func (p *ProxySt) CheckProxy() error {
+	fmt.Println(p.proxyUrl)
+	if p.proxyUrl != nil {
+		req, _ := http.NewRequest("GET", "https://www.baidu.com/", nil) //这里自己搭个web服务验证代理是否可用
+		cli2 := &http.Client{
+			Transport: &http.Transport{
+				Proxy: http.ProxyURL(p.proxyUrl),
+			},
+		}
+		resp, err := cli2.Do(req)
+		if err != nil {
+			return err
+		}
+		if resp.StatusCode != 200 {
+			return errors.New("error")
+		}
+		return nil
+	}
+	return errors.New("is nol")
+
 }

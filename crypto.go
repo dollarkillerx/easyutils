@@ -218,6 +218,6 @@ func Base64URLEncode(data []byte) string {
 }
 
 // Base64URL解码
-func Base64URLDecode(s string) ([]byte,error) {
+func Base64URLDecode(s string) ([]byte, error) {
 	return base64.URLEncoding.DecodeString(s)
 }

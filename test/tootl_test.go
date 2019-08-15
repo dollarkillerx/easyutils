@@ -210,3 +210,20 @@ func TestEasyToken(t *testing.T) {
 	}
 	t.Log("OK")
 }
+
+// 代理测试
+func TestProxy(t *testing.T) {
+	st, err := easyutils.InitProxy("127.0.0.1:8001")
+	if err != nil {
+		t.Fatal(err.Error())
+		return
+	}
+	// 没有问题测试一下
+	err = st.CheckProxy()
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	log.Println("Ok")
+
+}
