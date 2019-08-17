@@ -1,4 +1,4 @@
-package easyutils
+package httplib
 
 // Copyright 2014 beego Author. All Rights Reserved.
 //
