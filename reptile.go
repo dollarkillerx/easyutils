@@ -112,7 +112,7 @@ func (p *ProxySt) ReptileSpiderRequestFrom(targerUrl string, body io.Reader, coo
 	if p != nil {
 		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
 	} else {
-		httpClient = &http.Client{}
+		httpClient = &http.Client{Transport:&http.Transport{DisableKeepAlives:false}}
 	}
 	if body != nil {
 		request, e := http.NewRequest("POST", targerUrl, body)
@@ -157,7 +157,7 @@ func (p *ProxySt) ReptileUserRequestFrom(targerUrl string, body io.Reader, cooki
 	if p != nil {
 		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
 	} else {
-		httpClient = &http.Client{}
+		httpClient = &http.Client{Transport:&http.Transport{DisableKeepAlives:false}}
 	}
 	if body != nil {
 		request, e := http.NewRequest("POST", targerUrl, body)
@@ -203,7 +203,7 @@ func (p *ProxySt) ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie
 	if p != nil {
 		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
 	} else {
-		httpClient = &http.Client{}
+		httpClient = &http.Client{Transport:&http.Transport{DisableKeepAlives:false}}
 	}
 
 	request, e := http.NewRequest("GET", targerUrl, nil)
