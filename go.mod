@@ -3,6 +3,7 @@ module github.com/dollarkillerx/easyutils
 go 1.12
 
 require (
+	github.com/astaxie/beego v1.12.0 // indirect
 	github.com/mojocn/base64Captcha v0.0.0-20190716153509-e5e80f1b3816
 	golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4 // indirect
 	golang.org/x/image v0.0.0-20190729225735-1bd0cf576493 // indirect
