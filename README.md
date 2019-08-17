@@ -279,4 +279,7 @@ go get github.com/dollarkillerx/easyutils
     ``` 
     rep.CheckProxy() error
     ```
-- httplib.go 基于beego 的httplib
+###  httplib 基于beego 的httplib
+
+ 
+### logs 基于beego logs
