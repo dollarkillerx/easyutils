@@ -121,6 +121,8 @@ func (p *ProxySt) ReptileSpiderRequestFrom(targerUrl string, body io.Reader, coo
 		}
 		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 		request.Header.Set("User-Agent", p.ReptileGetSpiderAgent())
+		request.Header.Set("Connection", "close")
+
 		if cookies != nil {
 			for _, v := range cookies {
 				request.AddCookie(v)
@@ -166,6 +168,8 @@ func (p *ProxySt) ReptileUserRequestFrom(targerUrl string, body io.Reader, cooki
 		}
 		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 		request.Header.Set("User-Agent", p.ReptileGetUserAgent())
+		request.Header.Set("Connection", "close")
+
 		if cookies != nil {
 			for _, v := range cookies {
 				request.AddCookie(v)
