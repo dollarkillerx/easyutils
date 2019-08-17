@@ -31,8 +31,8 @@ var proxyD *ProxySt
 // url,username,password
 func InitProxy(arg ...string) (*ProxySt, error) {
 	if proxyD != nil {
-		return proxyD,nil
-	}else{
+		return proxyD, nil
+	} else {
 		// 初始化
 		proxyData := &ProxySt{}
 		if len(arg) == 1 {
@@ -55,7 +55,6 @@ func InitProxy(arg ...string) (*ProxySt, error) {
 			}
 
 			proxyD = proxyData
-
 
 			return proxyData, nil
 		} else {
@@ -83,7 +82,7 @@ var userAgentList = []string{"Mozilla/5.0 (compatible, MSIE 10.0, Windows NT, Di
 	"MQQBrowser/26 Mozilla/5.0 (Linux, U, Android 2.3.7, zh-cn, MB200 Build/GRJ22, CyanogenMod-7) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1"}
 
 // 获取随机UserAgent
-func (p *ProxySt)ReptileGetUserAgent() string {
+func (p *ProxySt) ReptileGetUserAgent() string {
 	rand.Seed(time.Now().UnixNano())
 
 	intn := rand.Intn(len(userAgentList))
@@ -98,7 +97,7 @@ var spiderAgent = []string{
 }
 
 // 获取蜘蛛agent
-func (p *ProxySt)ReptileGetSpiderAgent() string {
+func (p *ProxySt) ReptileGetSpiderAgent() string {
 	rand.Seed(time.Now().UnixNano())
 
 	intn := rand.Intn(len(spiderAgent))
@@ -112,7 +111,7 @@ func (p *ProxySt) ReptileSpiderRequestFrom(targerUrl string, body io.Reader, coo
 	if p != nil {
 		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
 	} else {
-		httpClient = &http.Client{Transport:&http.Transport{DisableKeepAlives:false}}
+		httpClient = &http.Client{Transport: &http.Transport{DisableKeepAlives: false}}
 	}
 	if body != nil {
 		request, e := http.NewRequest("POST", targerUrl, body)
@@ -159,7 +158,7 @@ func (p *ProxySt) ReptileUserRequestFrom(targerUrl string, body io.Reader, cooki
 	if p != nil {
 		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
 	} else {
-		httpClient = &http.Client{Transport:&http.Transport{DisableKeepAlives:false}}
+		httpClient = &http.Client{Transport: &http.Transport{DisableKeepAlives: false}}
 	}
 	if body != nil {
 		request, e := http.NewRequest("POST", targerUrl, body)
@@ -207,10 +206,8 @@ func (p *ProxySt) ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie
 	if p != nil {
 		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
 	} else {
-		httpClient = &http.Client{Transport:&http.Transport{DisableKeepAlives:false}}
+		httpClient = &http.Client{Transport: &http.Transport{DisableKeepAlives: false}}
 	}
-
-
 
 	request, e := http.NewRequest("GET", targerUrl, nil)
 	if e != nil {
