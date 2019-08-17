@@ -206,20 +206,25 @@ func (p *ProxySt) ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie
 		httpClient = &http.Client{Transport:&http.Transport{DisableKeepAlives:false}}
 	}
 
+
+
 	request, e := http.NewRequest("GET", targerUrl, nil)
 	if e != nil {
 		return nil, e
 	}
 	request.Header.Set("User-Agent", p.ReptileGetUserAgent())
+	request.Header.Set("Connection", "close")
 	if cookies != nil {
 		for _, v := range cookies {
 			request.AddCookie(v)
 		}
 	}
 	response, e := httpClient.Do(request)
+	defer response.Body.Close()
 	if e != nil {
 		return nil, e
 	}
+	return nil, nil
 
 	bytes, e := ioutil.ReadAll(response.Body)
 	defer response.Body.Close()
