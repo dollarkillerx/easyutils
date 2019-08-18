@@ -17,7 +17,10 @@ easyutils Golang 常用工具库
 ├── test 测试
 │   └── tootl_test.go
 ├── token.go token相关
+├── concurrent 并发控制
+├── clog 日志工具
 └── uuid.go uuid相关
+
 ```
 
 把生活和工作当中常用的东西抽离出来
@@ -279,7 +282,49 @@ go get github.com/dollarkillerx/easyutils
     ``` 
     rep.CheckProxy() error
     ```
-###  httplib 基于beego 的httplib
+###  httplib 基于beego 
+- 假装用户去请求
+    ``` 
+    EuUserGet(url string) ([]byte,error)
+    ```
+- 假装搜索引擎去请求
+    ``` 
+    EuSpiderGet(url string,) ([]byte,error)
+    ```
+- post请求
+    ``` 
+    req := httplib.Post("https://google.com/")
+    req.Param("username","google")
+    req.Param("password","123456")
+    ```
+- 设置head
+    ``` 
+    req := httplib.Post("https://google.com/")
+    req.Header("Accept-Encoding","gzip,deflate,sdch")
+    ```
+### clog 
+- 带执行文件地址的打印
+    ``` 
+    clog.LogFile("123")
+    ```
+- 带方法地址的打印
+    ``` 
+    clog.LogFunc("2312")
+    ```
+    
+### concurrent 并发包
+- 对象池
+    - 创建对象池
+        ``` 
+        NewObjPoll(obj interface{},num int) *ObjPoll
+        ```
+    - 获取对象
+        ``` 
+        (p *ObjPoll) GetObj(timeout time.Duration) (interface{},error)
+        ```
+    - 放回对象
+        ``` 
+        (p *ObjPoll) Release(obj interface{}) error
+        ```
 
- 
-### logs 基于beego logs
+	

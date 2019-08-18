@@ -2,6 +2,7 @@ package test
 
 import (
 	"github.com/dollarkillerx/easyutils"
+	"github.com/dollarkillerx/easyutils/clog"
 	"log"
 	"strings"
 	"testing"
@@ -226,4 +227,11 @@ func TestProxy(t *testing.T) {
 	}
 	log.Println("Ok")
 
+}
+
+// Logs test
+func TestLogs(t *testing.T) {
+	clog.LogFile("123")
+
+	clog.LogFunc("2312")
 }
