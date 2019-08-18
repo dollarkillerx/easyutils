@@ -22,24 +22,8 @@ var ClogGet = func() *Clog {
 	}
 }
 
-func LogFunc(str string) {
-	ClogGet().logFunc(str)
-}
-
-func LogFile(str string) {
+func Println(str string) {
 	ClogGet().logFile(str)
-}
-
-func (c *Clog) logFunc(str string) {
-	_, file, line, ok := runtime.Caller(1)
-	if !ok {
-		file = "???"
-		line = 0
-	}
-	_, filename := path.Split(file)
-	msg := "[" + filename + ":" + strconv.Itoa(line) + "] " + str
-
-	log.Print(msg)
 }
 
 func (c *Clog) logFile(str string) {

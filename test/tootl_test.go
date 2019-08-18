@@ -231,7 +231,6 @@ func TestProxy(t *testing.T) {
 
 // Logs test
 func TestLogs(t *testing.T) {
-	clog.LogFile("123")
+	clog.Println("123")
 
-	clog.LogFunc("2312")
 }

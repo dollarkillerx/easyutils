@@ -303,13 +303,9 @@ go get github.com/dollarkillerx/easyutils
     req.Header("Accept-Encoding","gzip,deflate,sdch")
     ```
 ### clog 
-- 带执行文件地址的打印
-    ``` 
-    clog.LogFile("123")
-    ```
 - 带方法地址的打印
     ``` 
-    clog.LogFunc("2312")
+    clog.Println("2312")
     ```
     
 ### concurrent 并发包

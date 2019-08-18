@@ -221,6 +221,7 @@ func (p *ProxySt) ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie
 		}
 	}
 	response, e := httpClient.Do(request)
+	defer response.Body.Close()
 
 	if e != nil {
 		return nil, e
@@ -228,7 +229,6 @@ func (p *ProxySt) ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie
 	return nil, nil
 
 	bytes, e := ioutil.ReadAll(response.Body)
-	defer response.Body.Close()
 	if e != nil {
 		return nil, e
 	}
