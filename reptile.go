@@ -110,8 +110,6 @@ func (p *ProxySt) ReptileSpiderRequestFrom(targerUrl string, body io.Reader, coo
 	var httpClient *http.Client
 	if p != nil {
 		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
-	} else {
-		httpClient = &http.Client{Transport: &http.Transport{DisableKeepAlives: false}}
 	}
 	if body != nil {
 		request, e := http.NewRequest("POST", targerUrl, body)
@@ -120,7 +118,6 @@ func (p *ProxySt) ReptileSpiderRequestFrom(targerUrl string, body io.Reader, coo
 		}
 		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 		request.Header.Set("User-Agent", ReptileGetSpiderAgent())
-		request.Header.Set("Connection", "close")
 
 		if cookies != nil {
 			for _, v := range cookies {
@@ -157,8 +154,6 @@ func (p *ProxySt) ReptileUserRequestFrom(targerUrl string, body io.Reader, cooki
 	var httpClient *http.Client
 	if p != nil {
 		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
-	} else {
-		httpClient = &http.Client{Transport: &http.Transport{DisableKeepAlives: false}}
 	}
 	if body != nil {
 		request, e := http.NewRequest("POST", targerUrl, body)
@@ -167,7 +162,6 @@ func (p *ProxySt) ReptileUserRequestFrom(targerUrl string, body io.Reader, cooki
 		}
 		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 		request.Header.Set("User-Agent", ReptileGetUserAgent())
-		request.Header.Set("Connection", "close")
 
 		if cookies != nil {
 			for _, v := range cookies {
@@ -205,8 +199,6 @@ func (p *ProxySt) ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie
 	var httpClient *http.Client
 	if p != nil {
 		httpClient = &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(p.proxyUrl)}}
-	} else {
-		httpClient = &http.Client{Transport: &http.Transport{DisableKeepAlives: false}}
 	}
 
 	request, e := http.NewRequest("GET", targerUrl, nil)
@@ -214,7 +206,6 @@ func (p *ProxySt) ReptileDownloadSimple(targerUrl string, cookies []*http.Cookie
 		return nil, e
 	}
 	request.Header.Set("User-Agent", ReptileGetUserAgent())
-	request.Header.Set("Connection", "close")
 	if cookies != nil {
 		for _, v := range cookies {
 			request.AddCookie(v)
