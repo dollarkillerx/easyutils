@@ -241,6 +241,10 @@ go get github.com/dollarkillerx/easyutils
     ``` 
     OffsetMath(page,limit int) int 
     ```
+- UrlEncoding 
+    ``` 
+    UrlEncoding(urls string) (string,error)
+    ```
     
 ### LayUi 兼容
 - 分页

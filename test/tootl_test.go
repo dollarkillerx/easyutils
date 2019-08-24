@@ -234,3 +234,14 @@ func TestLogs(t *testing.T) {
 	clog.Println("123")
 
 }
+
+
+// url test
+func TestUrlEncoding(t *testing.T) {
+	url := "https://www.baidu.com/search?ok=sada sadad"
+	s, e := easyutils.UrlEncoding(url)
+	if e!= nil {
+		panic(e.Error())
+	}
+	t.Log(s)
+}

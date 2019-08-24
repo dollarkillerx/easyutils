@@ -7,8 +7,10 @@
 package easyutils
 
 import (
+	"errors"
 	"fmt"
 	"math/rand"
+	"net/url"
 	"regexp"
 	"strings"
 	"time"
@@ -96,4 +98,16 @@ func Random(min, max int) int {
 func OffsetMath(page, limit int) int {
 	offset := (page - 1) * limit
 	return offset
+}
+
+
+// url encoding
+func UrlEncoding(urls string) (string,error) {
+	index := strings.Index(urls, "?")
+	if index == -1 {
+		return "",errors.New("数据格式错误")
+	}
+	values,_ := url.Parse(urls)
+	urls = urls[:index+1]
+	return urls + values.Query().Encode(),nil
 }
