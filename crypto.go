@@ -31,6 +31,13 @@ func Sha1Encode(str string) string {
 	return hex.EncodeToString(_sha1.Sum([]byte("")))
 }
 
+// 获取sha256
+func Sha256Encode(str string) string {
+	sum256 := sha256.Sum256([]byte(str))
+	s := hex.EncodeToString(sum256[:])
+	return s
+}
+
 // RSA256 公钥密钥对生成
 // @params: bits 密钥长度
 // @returns: private 密钥

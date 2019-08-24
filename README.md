@@ -42,6 +42,10 @@ go get github.com/dollarkillerx/easyutils
     ``` 
     sha1str := Sha1Encode("hello")
     ```
+- SHA256
+    ``` 
+    Sha256Encode(str string) string
+    ```
 - RSA256 公钥密钥对生成
     ``` 
     e, priKey, pubKey := GenRsaKey(1024) // 1024 密钥长度
