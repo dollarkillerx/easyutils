@@ -40,7 +40,7 @@ func DirPing(path string) error {
 		return e
 	}
 	if !b {
-		e := os.Mkdir(path, 00777)
+		e := os.MkdirAll(path, 00777)
 		if e != nil {
 			return e
 		}
