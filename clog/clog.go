@@ -30,7 +30,7 @@ func Println(str interface{}) {
 	logger.SetColorMod(true) // 开启颜色打印
 	//logger.SetLocation(1) // 打印调用方法的位置
 	logger.SetLocation(2) // 打印调用文件的位置
-	logger.PErrorf("--> ss%s", "logger.PErrorf")
+	logger.PErrorf("--> ss%s", str)
 }
 
 func Sprint(str string) string {
