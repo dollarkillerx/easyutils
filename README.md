@@ -340,3 +340,13 @@ go get github.com/dollarkillerx/easyutils
         ```
 
 	
+### 压缩相关
+- Zip
+    - 压缩
+     ``` 
+     err := compression.Zip("./captcha_test", "out.zip")
+     ```
+    - 解压
+     ``` 
+     err := compression.Unzip("out.zip", "./ps")
+     ```

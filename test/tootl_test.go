@@ -3,6 +3,7 @@ package test
 import (
 	"github.com/dollarkillerx/easyutils"
 	"github.com/dollarkillerx/easyutils/clog"
+	"github.com/dollarkillerx/easyutils/compression"
 	"log"
 	"strings"
 	"testing"
@@ -290,4 +291,18 @@ func TestLogger(t *testing.T) {
 
 func logf() {
 	clog.Println("hello")
+}
+
+func TestZip(t *testing.T) {
+	err := compression.Zip("./captcha_test", "out.zip")
+	if err != nil {
+		panic(err)
+	}
+}
+
+func TestUnZip(t *testing.T) {
+	unzip := compression.Unzip("out.zip", "./ps")
+	if unzip !=nil {
+		panic(unzip)
+	}
 }
