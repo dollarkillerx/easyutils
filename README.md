@@ -315,6 +315,10 @@ go get github.com/dollarkillerx/easyutils
     ``` 
     clog.Println("2312")
     ```
+- Sprint
+    ``` 
+    clog.Sprint(string) string
+    ```
     
 ### concurrent 并发包
 - 对象池

@@ -235,13 +235,59 @@ func TestLogs(t *testing.T) {
 
 }
 
-
 // url test
 func TestUrlEncoding(t *testing.T) {
 	url := "https://www.baidu.com/search?ok=sada sadad"
 	s, e := easyutils.UrlEncoding(url)
-	if e!= nil {
+	if e != nil {
 		panic(e.Error())
 	}
 	t.Log(s)
+}
+
+func TestDirPing(t *testing.T) {
+	DirPings("./HELLO/path")
+}
+
+func DirPings(path string) {
+	split := strings.Split(path, "/")
+	log.Println(len(split))
+	log.Println(split)
+}
+
+// 测试数组切片
+func TestSj(t *testing.T) {
+	a := []int{1, 2, 3, 4, 5, 6, 7}
+	zsdel(a, 3)
+
+}
+
+func zsdel(data interface{}, index int) []interface{} {
+
+	i, ok := data.([]interface{})
+	if ok {
+		log.Println(i)
+	} else {
+		log.Println("not ")
+	}
+	return nil
+}
+
+//type List struct {
+//	data interface{}
+//}
+//
+//func (l *List) Add(item interface{})  {
+//	t := reflect.ValueOf(item).Kind()
+//	l.data = new([]type)
+//}
+
+
+func TestLogger(t *testing.T) {
+	logf()
+}
+
+
+func logf() {
+	clog.Println("hello")
 }

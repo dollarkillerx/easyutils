@@ -100,14 +100,13 @@ func OffsetMath(page, limit int) int {
 	return offset
 }
 
-
 // url encoding
-func UrlEncoding(urls string) (string,error) {
+func UrlEncoding(urls string) (string, error) {
 	index := strings.Index(urls, "?")
 	if index == -1 {
-		return "",errors.New("数据格式错误")
+		return "", errors.New("数据格式错误")
 	}
-	values,_ := url.Parse(urls)
+	values, _ := url.Parse(urls)
 	urls = urls[:index+1]
-	return urls + values.Query().Encode(),nil
+	return urls + values.Query().Encode(), nil
 }

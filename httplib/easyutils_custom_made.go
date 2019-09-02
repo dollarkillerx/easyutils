@@ -28,24 +28,24 @@ func EuSpiderGet(url string) ([]byte, error) {
 func EuUserGetEncoding(url string) ([]byte, error) {
 	bytes, e := EuUserGet(url)
 	if e != nil {
-		return nil,e
+		return nil, e
 	}
 	data := strings.NewReader(string(bytes))
-	utf8Reader := transform.NewReader(data,determineencoding(data).NewDecoder())
+	utf8Reader := transform.NewReader(data, determineencoding(data).NewDecoder())
 
 	//将其他编码的reader转换为常用的utf8reader
-	all,err := ioutil.ReadAll(utf8Reader)
-	if err != nil{
-		return nil,err
+	all, err := ioutil.ReadAll(utf8Reader)
+	if err != nil {
+		return nil, err
 	}
-	return all,nil
+	return all, nil
 }
 
-func determineencoding(r io.Reader) encoding.Encoding  {
-	bytes,err  := bufio.NewReader(r).Peek(1024)
-	if err !=nil {
+func determineencoding(r io.Reader) encoding.Encoding {
+	bytes, err := bufio.NewReader(r).Peek(1024)
+	if err != nil {
 		panic(err)
 	}
-	e,_,_ := charset.DetermineEncoding(bytes,"")
+	e, _, _ := charset.DetermineEncoding(bytes, "")
 	return e
 }

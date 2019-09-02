@@ -48,6 +48,10 @@ func DirPing(path string) error {
 	return nil
 }
 
+//func DirPings(path string) error {
+//	strings.Split(path,"/")
+//}
+
 // 获取文件后缀
 func FileGetPostfix(filename string) (string, error) {
 	split := strings.Split(filename, ".")
