@@ -2,8 +2,11 @@ package easyutils
 
 import (
 	"fmt"
+	"math/rand"
 	"os/exec"
+	"strconv"
 	"strings"
+	"time"
 )
 
 func NewUUID() (string, error) {
@@ -25,4 +28,14 @@ func NewUUIDSimplicity() (string, error) {
 	}
 	u = strings.TrimSpace(u)
 	return u, e
+}
+
+func SuperRand() string {
+	head := int(time.Now().UnixNano())
+	body := rand.Intn(999999)
+	footer := int(time.Now().UnixNano())
+
+	encode := Sha256Encode(strconv.Itoa(head + body + footer))
+
+	return encode
 }

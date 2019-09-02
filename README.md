@@ -124,6 +124,10 @@ go get github.com/dollarkillerx/easyutils
     ``` 
     uuidstr,err := NewUUIDSimplicity()
     ```
+- 超级随机
+    ``` 
+    SuperRand() string
+    ```
     
     
 ### session 包
