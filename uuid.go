@@ -2,19 +2,18 @@ package easyutils
 
 import (
 	"fmt"
+	uuid "github.com/satori/go.uuid"
 	"math/rand"
-	"os/exec"
 	"strconv"
 	"strings"
 	"time"
 )
 
 func NewUUID() (string, error) {
-	out, err := exec.Command("uuidgen").Output()
 
-	oot := fmt.Sprintf("%s", out)
-	oot = strings.TrimSpace(oot)
-	return oot, err
+	v4 := uuid.NewV4()
+	str := fmt.Sprintf("%s",v4)
+	return str,nil
 }
 
 // 获取没有 - 的uuid

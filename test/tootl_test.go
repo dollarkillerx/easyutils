@@ -306,3 +306,12 @@ func TestUnZip(t *testing.T) {
 		panic(unzip)
 	}
 }
+
+func TestUUID(t *testing.T) {
+	s, e := easyutils.NewUUIDSimplicity()
+	if e != nil {
+		panic(e)
+	}
+
+	log.Println(s)
+}
