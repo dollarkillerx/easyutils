@@ -8,6 +8,8 @@ import (
 	"golang.org/x/text/transform"
 	"io"
 	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
@@ -48,4 +50,17 @@ func determineencoding(r io.Reader) encoding.Encoding {
 	}
 	e, _, _ := charset.DetermineEncoding(bytes, "")
 	return e
+}
+
+
+// 配置代理下载
+func ProxyDow(tagurl,proxy string) (*http.Response,error) {
+	response, e := Get(tagurl).SetUserAgent(easyutils.ReptileGetUserAgent()).SetProxy(func(request *http.Request) (tagurl *url.URL, e error) {
+		u := new(url.URL)
+		u.Scheme = "http"
+		u.Host = proxy
+		return u, nil
+	}).Response()
+
+	return response,e
 }
