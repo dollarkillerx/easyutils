@@ -4,6 +4,7 @@ import (
 	"github.com/dollarkillerx/easyutils"
 	"github.com/dollarkillerx/easyutils/clog"
 	"github.com/dollarkillerx/easyutils/compression"
+	"github.com/dollarkillerx/easyutils/httplib"
 	"log"
 	"strings"
 	"testing"
@@ -283,14 +284,21 @@ func zsdel(data interface{}, index int) []interface{} {
 //	l.data = new([]type)
 //}
 
+type cc struct {
+	Ds string
+	He int
+}
 
 func TestLogger(t *testing.T) {
 	logf()
 }
 
-
 func logf() {
 	clog.Println("hello")
+	clog.PrintPg("SADAS")
+	clog.PrintWa("sadsa")
+
+	clog.PrintWa(cc{Ds:"dadas",He:23})
 }
 
 func TestZip(t *testing.T) {
@@ -302,7 +310,7 @@ func TestZip(t *testing.T) {
 
 func TestUnZip(t *testing.T) {
 	unzip := compression.Unzip("out.zip", "./ps")
-	if unzip !=nil {
+	if unzip != nil {
 		panic(unzip)
 	}
 }
@@ -314,4 +322,16 @@ func TestUUID(t *testing.T) {
 	}
 
 	log.Println(s)
+}
+
+func TestDowPy(t *testing.T) {
+	_, e := httplib.ProxyDow("https://www.google.com/", "127.0.0.1:8002")
+	if e != nil {
+		errstr := e.Error()
+		index := strings.Index(errstr, "e.Error()")
+		if index == -1 {
+
+		}
+	}
+
 }
