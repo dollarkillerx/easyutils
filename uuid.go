@@ -11,7 +11,10 @@ import (
 
 func NewUUID() (string, error) {
 
-	v4 := uuid.NewV4()
+	v4,err := uuid.NewV4()
+	if err != nil {
+		return "",err
+	}
 	str := fmt.Sprintf("%s",v4)
 	return str,nil
 }
