@@ -2,7 +2,6 @@ package clog
 
 import (
 	"fmt"
-	"github.com/dollarkillerx/easyutils/clog/logger"
 	"log"
 	"path"
 	"runtime"
@@ -25,41 +24,25 @@ var ClogGet = func() *Clog {
 }
 
 func Println(str interface{}) {
-	logger.Reset()
-	logger.SetTimeFormat("2006-01-02 15.04.05")
-	logger.SetLevel(logger.LevelDebug)
-	logger.SetColorMod(true) // 开启颜色打印
-	//logger.SetLocation(1) // 打印调用方法的位置
-	logger.SetLocation(2) // 打印调用文件的位置
-	sprintf := fmt.Sprintf("--> ss%v", str)
-	bg := logger.Green(sprintf)
-	logger.PInfo(bg)
+	msg := des(str)
+	msg = fmt.Sprintf("%c[1;32;40m[%v]%c[0m %v", 0x1B, " INFO ", 0x1B,msg)
+
+	log.Println(msg)
 }
 
-func PrintPg(str interface{}) {
-	logger.Reset()
-	logger.SetTimeFormat("2006-01-02 15.04.05")
-	logger.SetLevel(logger.LevelDebug)
-	logger.SetColorMod(true) // 开启颜色打印
-	//logger.SetLocation(1) // 打印调用方法的位置
-	logger.SetLocation(2) // 打印调用文件的位置
-	sprintf := fmt.Sprintf("--> ss%v", str)
-	bg := logger.Red(sprintf)
-	logger.PDebug(bg)
+func PrintEr(str interface{}) {
+	msg := des(str)
+	msg = fmt.Sprintf("%c[1;33;40m[%v]%c[0m %v", 0x1B, " ERROR ", 0x1B,msg)
+
+	log.Println(msg)
 }
 
 func PrintWa(str interface{}) {
-	logger.Reset()
-	logger.SetTimeFormat("2006-01-02 15.04.05")
-	logger.SetLevel(logger.LevelDebug)
-	logger.SetColorMod(true) // 开启颜色打印
-	//logger.SetLocation(1) // 打印调用方法的位置
-	logger.SetLocation(2) // 打印调用文件的位置
-	sprintf := fmt.Sprintf("--> ss%v", str)
-	bg := logger.Red(sprintf)
-	logger.PWarn(bg)
-}
+	msg := des(str)
+	msg = fmt.Sprintf("%c[1;31;40m[%v]%c[0m %v", 0x1B, " WARNING ", 0x1B,msg)
 
+	log.Println(msg)
+}
 
 func Sprint(str string) string {
 	_, file, line, ok := runtime.Caller(2)
@@ -72,14 +55,18 @@ func Sprint(str string) string {
 	return msg
 }
 
-func (c *Clog) logFile(str string) {
+
+func des(str interface{}) string {
 	_, file, line, ok := runtime.Caller(2)
 	if !ok {
 		file = "???"
 		line = 0
 	}
 	_, filename := path.Split(file)
-	msg := "[" + filename + ":" + strconv.Itoa(line) + "] " + str
 
-	log.Println(msg)
+	// 上色  参考:https://blog.csdn.net/w616589292/article/details/51078787
+	// data := fmt.Sprintf("%c[1;31;40m[%v]%c[0m %v", 0x1B, "err", 0x1B,"萨达所大所大")
+
+	msg := fmt.Sprintf("[ %v : %v ]  %v",filename,strconv.Itoa(line),str)
+	return msg
 }

@@ -295,7 +295,6 @@ func TestLogger(t *testing.T) {
 
 func logf() {
 	clog.Println("hello")
-	clog.PrintPg("SADAS")
 	clog.PrintWa("sadsa")
 
 	clog.PrintWa(cc{Ds:"dadas",He:23})
@@ -334,4 +333,16 @@ func TestDowPy(t *testing.T) {
 		}
 	}
 
+}
+
+
+// 测试 打印颜色 log
+func TestColor(t *testing.T) {
+	//data := fmt.Sprintf("%c[1;31;40m[%v]%c[0m %v", 0x1B, "err", 0x1B,"萨达所大所大")
+	//log.Println(data)
+	clog.Println("你好")
+
+	clog.PrintWa("wadsa")
+
+	clog.PrintEr("errsa")
 }
