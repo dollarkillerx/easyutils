@@ -350,3 +350,8 @@ go get github.com/dollarkillerx/easyutils
      ``` 
      err := compression.Unzip("out.zip", "./ps")
      ```
+     
+### 通知邮件  (公用邮件服务器)
+    ```
+    gemail.SendNifoLog([]string{toUser},fromUser,subject)
+    ```

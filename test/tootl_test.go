@@ -5,6 +5,7 @@ import (
 	"github.com/dollarkillerx/easyutils"
 	"github.com/dollarkillerx/easyutils/clog"
 	"github.com/dollarkillerx/easyutils/compression"
+	"github.com/dollarkillerx/easyutils/gemail"
 	"github.com/dollarkillerx/easyutils/httplib"
 	"log"
 	"strings"
@@ -352,4 +353,32 @@ func TestCol(t *testing.T) {
 	fmt.Println("")
 
 	clog.Test()
+}
+
+// 测试邮件
+func TestEmail(t *testing.T) {
+	fromUser := "Hello"
+	toUser := "490890221@qq.com"
+	subject := "hello,world"
+	err := gemail.SendNifoLog([]string{toUser},fromUser,subject)
+	if err != nil {
+		log.Println(err.Error())
+		log.Println("发送邮件失败")
+		return
+	}
+	log.Println("发送邮件成功")
+
+	//e := email.NewEmail()
+	//e.From = "Jordan Wright <notice@dollarkiller.com>"
+	//e.To = []string{"adapa@qq.com"}
+	//e.Bcc = []string{"test_bcc@example.com"}
+	//e.Cc = []string{"test_cc@example.com"}
+	//e.Subject = "Awesome Subject"
+	//e.Text = []byte("Text Body is, of course, supported!")
+	//e.HTML = []byte("<h1>Fancy HTML is supported, too!</h1>")
+	//send := e.Send("smtp.mail.ru:465", smtp.PlainAuth("", "notice@dollarkiller.com", "%Y4I4qjlqKAy", "smtp.mail.ru"))
+	//if send != nil {
+	//	panic(send)
+	//}
+
 }
