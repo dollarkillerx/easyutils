@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"github.com/dollarkillerx/easyutils"
 	"github.com/dollarkillerx/easyutils/clog"
 	"github.com/dollarkillerx/easyutils/compression"
@@ -345,4 +346,10 @@ func TestColor(t *testing.T) {
 	clog.PrintWa("wadsa")
 
 	clog.PrintEr("errsa")
+}
+
+func TestCol(t *testing.T) {
+	fmt.Println("")
+
+	clog.Test()
 }
