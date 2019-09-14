@@ -67,19 +67,19 @@ func mapForm(ptr interface{}, form map[string][]string) error {
 		// 如果 没有 tag 就用原来的名称示意
 		if inputFieldName == "" {
 			inputFieldName = typeField.Name
-
-			// 如果是一个struct 就进行递归
-			if structFieldKind == reflect.Struct {
-				err := mapForm(structField.Addr().Interface(), form)
-				if err != nil {
-					return err
-				}
-				continue
-			}
 		}
 
 		// 允许用户不发生绑定
 		if inputFieldName == "-" {
+			continue
+		}
+
+		// 如果是一个struct 就进行递归
+		if structFieldKind == reflect.Struct {
+			err := mapForm(structField.Addr().Interface(), form)
+			if err != nil {
+				return err
+			}
 			continue
 		}
 
