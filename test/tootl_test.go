@@ -299,7 +299,7 @@ func logf() {
 	clog.Println("hello")
 	clog.PrintWa("sadsa")
 
-	clog.PrintWa(cc{Ds:"dadas",He:23})
+	clog.PrintWa(cc{Ds: "dadas", He: 23})
 }
 
 func TestZip(t *testing.T) {
@@ -337,7 +337,6 @@ func TestDowPy(t *testing.T) {
 
 }
 
-
 // 测试 打印颜色 log
 func TestColor(t *testing.T) {
 	//data := fmt.Sprintf("%c[1;31;40m[%v]%c[0m %v", 0x1B, "err", 0x1B,"萨达所大所大")
@@ -360,7 +359,7 @@ func TestEmail(t *testing.T) {
 	fromUser := "Hello"
 	toUser := "490890221@qq.com"
 	subject := "hello,world"
-	err := gemail.SendNifoLog([]string{toUser},fromUser,subject)
+	err := gemail.SendNifoLog([]string{toUser}, fromUser, subject)
 	if err != nil {
 		log.Println(err.Error())
 		log.Println("发送邮件失败")

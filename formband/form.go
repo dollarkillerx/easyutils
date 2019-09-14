@@ -29,7 +29,6 @@ func Band(req *http.Request, obj interface{}) error {
 	return errors.New("当前方法暂不支持")
 }
 
-
 // 绑定Json数据
 func BindJson(req *http.Request, obj interface{}) error {
 	s, err := ioutil.ReadAll(req.Body) //把  body 内容读入字符串
@@ -49,12 +48,12 @@ func BindForm(req *http.Request, obj interface{}) error {
 
 //自动绑定方法
 func mapForm(ptr interface{}, form map[string][]string) error {
-	typ := reflect.TypeOf(ptr).Elem()   // 获取type elem
-	val := reflect.ValueOf(ptr).Elem()  // 获取val elem
+	typ := reflect.TypeOf(ptr).Elem()  // 获取type elem
+	val := reflect.ValueOf(ptr).Elem() // 获取val elem
 
 	// NumField 获取 个数
 	for i := 0; i < typ.NumField(); i++ {
-		typeField := typ.Field(i)  // 获取第 i 个
+		typeField := typ.Field(i) // 获取第 i 个
 		structField := val.Field(i)
 		// 如果不能修改就跳过
 		if !structField.CanSet() {
@@ -63,7 +62,7 @@ func mapForm(ptr interface{}, form map[string][]string) error {
 
 		// 获取值类型
 		structFieldKind := structField.Kind()
-		inputFieldName := typeField.Tag.Get("form")  // 获取type tag
+		inputFieldName := typeField.Tag.Get("form") // 获取type tag
 
 		// 如果 没有 tag 就用原来的名称示意
 		if inputFieldName == "" {
@@ -252,13 +251,4 @@ func setTimeField(val string, structField reflect.StructField, value reflect.Val
 
 	value.Set(reflect.ValueOf(t))
 	return nil
-}
-
-// Don't pass in pointers to bind to. Can lead to bugs. See:
-// https://github.com/codegangsta/martini-contrib/issues/40
-// https://github.com/codegangsta/martini-contrib/pull/34#issuecomment-29683659
-func ensureNotPointer(obj interface{}) {
-	if reflect.TypeOf(obj).Kind() == reflect.Ptr {
-		panic("Pointers are not accepted as binding models")
-	}
 }

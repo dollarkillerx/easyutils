@@ -29,8 +29,7 @@ func Zip(srcFile string, destZip string) error {
 			return err
 		}
 
-
-		header.Name = strings.TrimPrefix(path, filepath.Dir(srcFile) + "/")
+		header.Name = strings.TrimPrefix(path, filepath.Dir(srcFile)+"/")
 		// header.Name = path
 		if info.IsDir() {
 			header.Name += "/"
@@ -43,7 +42,7 @@ func Zip(srcFile string, destZip string) error {
 			return err
 		}
 
-		if ! info.IsDir() {
+		if !info.IsDir() {
 			file, err := os.Open(path)
 			if err != nil {
 				return err
@@ -93,4 +92,3 @@ func Unzip(zipFile string, destDir string) error {
 	}
 	return nil
 }
-
