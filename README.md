@@ -352,6 +352,20 @@ go get github.com/dollarkillerx/easyutils
      ```
      
 ### 通知邮件  (公用邮件服务器)
+```
+gemail.SendNifoLog([]string{toUser},fromUser,subject)
+```
+
+### form 绑定
+- 自动绑定
+    ``` 
+    Band(req *http.Request, obj interface{}) error
     ```
-    gemail.SendNifoLog([]string{toUser},fromUser,subject)
+- 绑定Json
+    ``` 
+    BindJson(req *http.Request, obj interface{}) error
+    ```
+- 绑定Form
+    ``` 
+    BindForm(req *http.Request, obj interface{}) error
     ```

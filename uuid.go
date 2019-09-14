@@ -2,7 +2,7 @@ package easyutils
 
 import (
 	"fmt"
-	uuid "github.com/satori/go.uuid"
+	"github.com/dollarkillerx/easyutils/uuid"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -10,7 +10,6 @@ import (
 )
 
 func NewUUID() (string, error) {
-
 	v4,err := uuid.NewV4()
 	if err != nil {
 		return "",err
