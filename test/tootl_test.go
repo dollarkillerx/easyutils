@@ -5,11 +5,13 @@ import (
 	"github.com/dollarkillerx/easyutils"
 	"github.com/dollarkillerx/easyutils/clog"
 	"github.com/dollarkillerx/easyutils/compression"
+	"github.com/dollarkillerx/easyutils/gcache"
 	"github.com/dollarkillerx/easyutils/gemail"
 	"github.com/dollarkillerx/easyutils/httplib"
 	"log"
 	"strings"
 	"testing"
+	"time"
 )
 
 func TestNewUUID(t *testing.T) {
@@ -57,22 +59,83 @@ func TestGetTimeStringToTime(t *testing.T) {
 	t.Log(s)
 }
 
+func TestCache(t *testing.T) {
+	//err := gcache.CacheSetTime("ok", "12312", 10)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//get, b := gcache.CacheGet("ok")
+	//if !b {
+	//	clog.Println("木有")
+	//}else{
+	//	clog.Println(get)
+	//}
+	//
+	//time.Sleep(time.Second * 10)
+	//
+	//exit := gcache.Exit("ok")
+	//if exit {
+	//	clog.Println("茨木")
+	//}else {
+	//	clog.Println("kaka")
+	//}
+
+
+	// 并发安全测试
+	go func() {
+		for i:=0;i<10000;i++ {
+			go func(i int) {
+				err := gcache.CacheSetTime("ok", "12312", 10)
+				if err != nil {
+					panic(err.Error())
+				}
+			}(i)
+		}
+	}()
+
+	go func() {
+		for i:=0;i<10000;i++ {
+			go func(i int) {
+				get, b := gcache.CacheGet("ok")
+				if b {
+					clog.Println(get)
+					clog.Println("茨木")
+				}else {
+					clog.Println("kaka")
+				}
+			}(i)
+		}
+	}()
+
+	time.Sleep(time.Second * 20)
+
+}
+
 func TestGetSession(t *testing.T) {
-	session := easyutils.SessionGenerate("dollarkiller", 6*60*60)
-	t.Log(session)
-	bool := easyutils.SessionCheck(session)
-	t.Log(easyutils.SessionMap.Load(session))
-	t.Log(bool)
-
-	node, e := easyutils.SessionGetData(session)
+	// 增加
+	session := easyutils.SessionGetByGoCache()
+	node := easyutils.Session{Name:"DollarKiller"}
+	s, e := session.Set(&node)
 	if e != nil {
-		t.Fatal(e.Error())
+		panic(e.Error())
 	}
-	t.Log(node)
+	log.Println(s)
 
-	easyutils.SessionDel(session)
-	bool = easyutils.SessionCheck(session)
-	t.Log(bool)
+	get, e := session.Get(s)
+	if e != nil {
+		panic(e)
+	}else {
+		log.Println(get)
+	}
+
+	expired := session.Expired(s)
+	if !expired {
+		log.Println("not data")
+	}else {
+		clog.Println("存在啊")
+	}
+
 }
 
 func TestGenRsaKey(t *testing.T) {

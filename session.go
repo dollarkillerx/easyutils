@@ -3,85 +3,96 @@
 * User: dollarkiller
 * Date: 19-6-9
 * Time: 下午12:08
+* @Description: 自研 多兼容 session  (设计思路一个中央控制器   一个interface实现控制器下的方法)
+* @Github: https://github.com/dollarkillerx
 * */
 package easyutils
 
 import (
 	"errors"
-	"math/rand"
-	"strconv"
-	"sync"
+	"github.com/dollarkillerx/easyutils/gcache"
 	"time"
 )
 
-var (
-	SessionMap sync.Map
-)
-
-type SessionNode struct {
+// session node
+type Session struct {
 	Name           string
+	Identification string                 // 唯一身份标识
+	Data           map[string]interface{} // 存储器
 	CreationTime   int64 // 创建时间
 	ExpirationTime int64 // 过期时间
 }
 
-// 获得session
-func SessionGenerate(name string, times int64) string { // name,过期时间
-	timeNano := time.Now().UnixNano()
-	time := time.Now().Unix()
-	outtime := time + times
-	intn := rand.Intn(100000)
-	encode := Md5Encode(strconv.FormatInt(timeNano, 10) + strconv.Itoa(intn))
-	node := &SessionNode{
-		Name:           name,
-		CreationTime:   time,
-		ExpirationTime: outtime,
-	}
-
-	SessionMap.Store(encode, node)
-	return encode
+type SessionInterface interface {
+	Get(id string) (*Session, error)   // 拥有通过id获取session
+	Set(data *Session) (string, error) // 返回id and 错误信息
+	SetTime(data *Session,tim time.Duration) (string, error) // 返回id and 错误信息
+	Del(id string) error
+	Expired(id string) bool   // 检测是否过期  过期返回false 反之true
 }
 
-// 获取session数据
-func SessionGetData(sessionId string) (*SessionNode, error) {
-	if sessionId == "" || len(sessionId) == 0 {
-		return nil, errors.New("not data")
-	}
-	value, ok := SessionMap.Load(sessionId)
-	if ok != true {
-		return nil, errors.New("not data")
-	}
 
-	node := value.(*SessionNode)
-	nowTime := time.Now().Unix()
-	if nowTime >= node.CreationTime && nowTime < node.ExpirationTime {
-		return node, nil
-	}
-	// 删除过期的session
-	SessionMap.Delete(sessionId)
-	return nil, errors.New("not data")
+// ================================不同数据源的实现=====================================
+// 系统自带 gocache 存储
+type GoSessionNode struct {
+
 }
 
-// 验证session
-func SessionCheck(sessionId string) bool {
-	if sessionId == "" || len(sessionId) == 0 {
-		return false
-	}
-	value, ok := SessionMap.Load(sessionId)
-	if ok != true {
-		return false
+
+func SessionGetByGoCache() SessionInterface {
+	node := GoSessionNode{}
+	return &node
+}
+
+
+func (g *GoSessionNode) Get(id string) (*Session,error) {
+	// 存储器
+	get, b := gcache.CacheGet(id)
+	if !b {
+		return nil,errors.New("data not ex")
 	}
 
-	node := value.(*SessionNode)
-	nowTime := time.Now().Unix()
-	if nowTime >= node.CreationTime && nowTime < node.ExpirationTime {
+	s,ok := get.(*Session)
+	if ok {
+		return s,nil
+	}
+
+	return nil,errors.New("data not ex")
+}
+
+func (g *GoSessionNode) Set(data *Session) (string,error) {
+	// 生成随机key
+	key := SuperRand()
+	err := gcache.CacheSetTime(key, data, 60*60*6)
+	if err != nil {
+		return "",err
+	}
+	return key, nil
+}
+
+func (g *GoSessionNode) SetTime(data *Session,tim time.Duration) (string,error) {
+	// 生成随机key
+	key := SuperRand()
+	err := gcache.CacheSetTime(key, data, 60*60*tim)
+	if err != nil {
+		return "",err
+	}
+	return key, nil
+}
+
+func (g *GoSessionNode) Expired(id string) bool {
+	exit := gcache.Exit(id)
+	if exit {
 		return true
 	}
-	// 删除过期的session
-	SessionMap.Delete(sessionId)
 	return false
 }
 
-// 删除session
-func SessionDel(sessionId string) {
-	SessionMap.Delete(sessionId)
+
+func (g *GoSessionNode) Del(id string) error {
+	err := gcache.CacheDle(id)
+	if err != nil  {
+		return err
+	}
+	return nil
 }
