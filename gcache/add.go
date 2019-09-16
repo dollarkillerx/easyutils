@@ -16,6 +16,7 @@ func init() {
 	gc = New(20).
 		LRU().
 		Build()
+
 }
 
 // 返回cache

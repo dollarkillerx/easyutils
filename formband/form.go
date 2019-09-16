@@ -32,6 +32,9 @@ func Band(req *http.Request, obj interface{}) error {
 // 绑定Json数据
 func BindJson(req *http.Request, obj interface{}) error {
 	s, err := ioutil.ReadAll(req.Body) //把  body 内容读入字符串
+	if req.Body != nil {
+		defer req.Body.Close()
+	}
 	if err != nil {
 		return err
 	}
@@ -42,6 +45,9 @@ func BindJson(req *http.Request, obj interface{}) error {
 // 绑定Form数据
 func BindForm(req *http.Request, obj interface{}) error {
 	req.ParseForm()
+	if req.Body != nil {
+		defer req.Body.Close()
+	}
 	err := mapForm(obj, req.Form)
 	return err
 }
