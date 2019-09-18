@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/astaxie/beego v1.12.0 // indirect
+	github.com/bluele/gcache v0.0.0-20190518031135-bc40bd653833
 	github.com/mojocn/base64Captcha v0.0.0-20190716153509-e5e80f1b3816
 	github.com/satori/go.uuid v1.2.0
 	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644

@@ -81,10 +81,9 @@ func TestCache(t *testing.T) {
 	//	clog.Println("kaka")
 	//}
 
-
 	// 并发安全测试
 	go func() {
-		for i:=0;i<10000;i++ {
+		for i := 0; i < 10000; i++ {
 			go func(i int) {
 				err := gcache.CacheSetTime("ok", "12312", 10)
 				if err != nil {
@@ -95,13 +94,13 @@ func TestCache(t *testing.T) {
 	}()
 
 	go func() {
-		for i:=0;i<10000;i++ {
+		for i := 0; i < 10000; i++ {
 			go func(i int) {
 				get, b := gcache.CacheGet("ok")
 				if b {
 					clog.Println(get)
 					clog.Println("茨木")
-				}else {
+				} else {
 					clog.Println("kaka")
 				}
 			}(i)
@@ -115,7 +114,7 @@ func TestCache(t *testing.T) {
 func TestGetSession(t *testing.T) {
 	// 增加
 	session := easyutils.SessionGetByGoCache()
-	node := easyutils.Session{Name:"DollarKiller"}
+	node := easyutils.Session{Name: "DollarKiller"}
 	s, e := session.Set(&node)
 	if e != nil {
 		panic(e.Error())
@@ -125,14 +124,14 @@ func TestGetSession(t *testing.T) {
 	get, e := session.Get(s)
 	if e != nil {
 		panic(e)
-	}else {
+	} else {
 		log.Println(get)
 	}
 
 	expired := session.Expired(s)
 	if !expired {
 		log.Println("not data")
-	}else {
+	} else {
 		clog.Println("存在啊")
 	}
 

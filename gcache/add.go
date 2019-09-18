@@ -26,27 +26,27 @@ func init() {
 //}
 
 // 获取
-func CacheGet(key interface{}) (interface{},bool) {
+func CacheGet(key interface{}) (interface{}, bool) {
 	get, e := gc.Get(key)
 	if e != nil {
-		return "",false
+		return "", false
 	}
 
 	if get == "" {
-		return "",false
+		return "", false
 	}
 
-	return get,true
+	return get, true
 }
 
 // 设置 有过期时间
-func CacheSetTime(key,data interface{},tim time.Duration) error {
+func CacheSetTime(key, data interface{}, tim time.Duration) error {
 	err := gc.SetWithExpire(key, data, tim)
 	return err
 }
 
 // 设置
-func CacheSet(key,data interface{}) error {
+func CacheSet(key, data interface{}) error {
 	err := gc.Set(key, data)
 	return err
 }
