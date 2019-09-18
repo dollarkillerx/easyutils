@@ -41,7 +41,7 @@ func CacheGet(key interface{}) (interface{},bool) {
 
 // 设置 有过期时间
 func CacheSetTime(key,data interface{},tim time.Duration) error {
-	err := gc.SetWithExpire(key, data, time.Second*tim)
+	err := gc.SetWithExpire(key, data, tim)
 	return err
 }
 
