@@ -365,14 +365,16 @@ func logf() {
 }
 
 func TestZip(t *testing.T) {
-	err := compression.Zip("./captcha_test", "out.zip")
+	zip := compression.Zip{}
+	err := zip.Zip("./clog", "out.zip")
 	if err != nil {
 		panic(err)
 	}
 }
 
 func TestUnZip(t *testing.T) {
-	unzip := compression.Unzip("out.zip", "./ps")
+	zip := compression.Zip{}
+	unzip := zip.UnZip("out.zip", "./ps")
 	if unzip != nil {
 		panic(unzip)
 	}
