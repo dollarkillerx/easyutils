@@ -10,12 +10,14 @@ type ObjPoll struct {
 	bufChan chan interface{}
 }
 
+type PoolGenerateItem func() interface{}
+
 // 创建对象池
-func NewObjPoll(obj interface{}, num int) *ObjPoll {
+func NewObjPoll(obj PoolGenerateItem, num int) *ObjPoll {
 	poll := ObjPoll{}
 	poll.bufChan = make(chan interface{}, num)
 	for i := 0; i < num; i++ {
-		poll.bufChan <- obj
+		poll.bufChan <- obj()
 	}
 
 	return &poll
