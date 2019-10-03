@@ -445,3 +445,13 @@ func TestEmail(t *testing.T) {
 	//}
 
 }
+
+func TestPanic(t *testing.T) {
+	defer func() {
+		if i := recover();i != nil {
+			trace := clog.PanicTrace(2048)
+			log.Println(string(trace))
+		}
+	}()
+	panic("adasd")
+}
