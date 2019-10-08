@@ -14,7 +14,6 @@ import (
 )
 
 type Str struct {
-
 }
 
 func (s *Str) Zip(str string) string {

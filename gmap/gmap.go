@@ -27,26 +27,35 @@ func Unmarshal(jsn string) (*mapun, error) {
 	}, nil
 }
 
-func (m *mapun) GetString(key string) (string,bool) {
-	s,ok := m.mc[key].(string)
-	return s,ok
+func (m *mapun) GetString(key string) (string, bool) {
+	s, ok := m.mc[key].(string)
+	return s, ok
 }
 
-func (m *mapun) GetInt(key string) (int,bool) {
-	s,ok := m.mc[key].(int)
-	return s,ok
+func (m *mapun) GetInt(key string) (int, bool) {
+	s, ok := m.mc[key].(int)
+	return s, ok
 }
 
-func (m *mapun) GetMap (key string) (map[string]interface{}, bool) {
-	i,ok := m.mc[key].([]interface{})[0].(map[string]interface{})
+func (m *mapun) GetSlice(key string) ([]interface{}, bool) {
+	i,ok := m.mc[key].([]interface{})
 	return i,ok
 }
 
-func (m *mapun) GetMap2 (data interface{},key string) (map[string]interface{}, bool) {
-	i,ok := data.([]interface{})[0].(map[string]interface{})
+func (m *mapun) GetSlice2(data interface{}) ([]interface{}, bool) {
+	i,ok := data.([]interface{})
 	return i,ok
 }
 
+func (m *mapun) GetMap(key string) (map[string]interface{}, bool) {
+	i, ok := m.mc[key].(map[string]interface{})
+	return i, ok
+}
+
+func (m *mapun) GetMap2(data interface{}) (map[string]interface{}, bool) {
+	i, ok := data.(map[string]interface{})
+	return i, ok
+}
 
 // 消耗大
 //func (m *mapun) ToMap() (map[string]interface{}, bool) {

@@ -9,17 +9,16 @@ package compression
 import "github.com/dollarkillerx/easyutils/exc"
 
 type Tar struct {
-
 }
 
-func (t *Tar) Tar(path,des string) error {
+func (t *Tar) Tar(path, des string) error {
 	//tar zcvf FileName.tar.gz DirName
 	ex := exc.Exc{}
 	err := ex.ReLan("tar", "zcvf", des+".tar.gz", path)
 	return err
 }
 
-func (t *Tar) UnTar(des,path string) error {
+func (t *Tar) UnTar(des, path string) error {
 	//tar zxvf FileName.tar.gz
 	ex := exc.Exc{}
 	err := ex.ReLan("tar", "zxvf", des, path)

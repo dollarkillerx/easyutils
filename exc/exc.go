@@ -13,7 +13,6 @@ import (
 )
 
 type Exc struct {
-
 }
 
 func (u *Exc) Exec(sh string, arg ...string) (error, string, string) {

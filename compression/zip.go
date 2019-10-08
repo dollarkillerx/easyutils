@@ -11,7 +11,6 @@ import (
 )
 
 type Zip struct {
-
 }
 
 func (z *Zip) Zip(src, dst string) (err error) {

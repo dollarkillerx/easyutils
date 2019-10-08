@@ -16,6 +16,9 @@ func TestMap(t *testing.T) {
 	data := `
 	{
 		"device": "this is device",
+		"ppc": {
+			"ok":"ppc"
+		},	
 		"data": [
 			{
 				"humidity": "this is humidity",
@@ -35,9 +38,18 @@ func TestMap(t *testing.T) {
 		log.Println(s)
 	}
 
-	getMap, i := mapun.GetMap("data")
+	i3, i4 := mapun.GetMap("ppc")
+	if i4 {
+		log.Println(i3)
+	}
+
+	getMap, i := mapun.GetSlice("data")
 	if i {
 		log.Println(getMap)
 	}
-}
 
+	i2,bo := mapun.GetMap2(getMap[0])
+	if bo {
+		log.Println(i2)
+	}
+}
