@@ -42,6 +42,12 @@ func (m *mapun) GetMap (key string) (map[string]interface{}, bool) {
 	return i,ok
 }
 
+func (m *mapun) GetMap2 (data interface{},key string) (map[string]interface{}, bool) {
+	i,ok := data.([]interface{})[0].(map[string]interface{})
+	return i,ok
+}
+
+
 // 消耗大
 //func (m *mapun) ToMap() (map[string]interface{}, bool) {
 //	data := make(map[string]interface{})
