@@ -23,7 +23,8 @@ func TestMap(t *testing.T) {
 			{
 				"humidity": "this is humidity",
 				"time": "this is time"
-			}
+			},
+			"hello"
 		]
 	}
 	`
@@ -33,23 +34,32 @@ func TestMap(t *testing.T) {
 		panic(e)
 	}
 
+	// 获取string
 	s, b := mapun.GetString("device")
 	if b {
 		log.Println(s)
 	}
 
+	// 获取map
 	i3, i4 := mapun.GetMap("ppc")
 	if i4 {
 		log.Println(i3)
 	}
 
+	// 获取slice
 	getMap, i := mapun.GetSlice("data")
 	if i {
 		log.Println(getMap)
 	}
 
-	i2,bo := mapun.GetMap2(getMap[0])
-	if bo {
-		log.Println(i2)
+	//i2,bo := mapun.GetMap2(getMap[0])
+	//if bo {
+	//	log.Println(i2)
+	//}
+
+	// 获取 slice map
+	sliceMap, i5 := mapun.GetSliceMap("data")
+	if i5 {
+		log.Println(sliceMap)
 	}
 }

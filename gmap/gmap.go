@@ -32,6 +32,11 @@ func (m *mapun) GetString(key string) (string, bool) {
 	return s, ok
 }
 
+func (m *mapun) GetInterface(key string) (interface{}, bool) {
+	s, ok := m.mc[key]
+	return s, ok
+}
+
 func (m *mapun) GetInt(key string) (int, bool) {
 	s, ok := m.mc[key].(int)
 	return s, ok
@@ -55,6 +60,23 @@ func (m *mapun) GetMap(key string) (map[string]interface{}, bool) {
 func (m *mapun) GetMap2(data interface{}) (map[string]interface{}, bool) {
 	i, ok := data.(map[string]interface{})
 	return i, ok
+}
+
+func (m *mapun) GetSliceMap(key string) ([]map[string]interface{},bool) {
+	data := make([]map[string]interface{},0)
+	slice, b := m.GetSlice(key)
+	if !b {
+		return nil,b
+	}
+
+	for _,item := range slice {
+		map2, i := m.GetMap2(item)
+		if !i {
+			continue
+		}
+		data = append(data,map2)
+	}
+	return data,true
 }
 
 // 消耗大
