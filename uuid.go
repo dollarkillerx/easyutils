@@ -33,6 +33,7 @@ func NewUUIDSimplicity() (string, error) {
 
 func SuperRand() string {
 	head := int(time.Now().UnixNano())
+	rand.Seed(time.Now().UnixNano())
 	body := rand.Intn(999999)
 	footer := int(time.Now().UnixNano())
 
