@@ -1,7 +1,10 @@
 package easyutils
 
 import (
+	"bytes"
 	"crypto"
+	"crypto/aes"
+	"crypto/cipher"
 	"crypto/md5"
 	"crypto/rand"
 	"crypto/rsa"
@@ -227,4 +230,33 @@ func Base64URLEncode(data []byte) string {
 // Base64URL解码
 func Base64URLDecode(s string) ([]byte, error) {
 	return base64.URLEncoding.DecodeString(s)
+}
+
+// 对称加密 AES 高级标准加密
+func padding(src []byte, blocksize int) []byte {
+	padnum := blocksize - len(src)%blocksize
+	pad := bytes.Repeat([]byte{byte(padnum)}, padnum)
+	return append(src, pad...)
+}
+
+func unpadding(src []byte) []byte {
+	n := len(src)
+	unpadnum := int(src[n-1])
+	return src[:n-unpadnum]
+}
+
+func AESEncode(key []byte, src []byte) []byte {
+	block, _ := aes.NewCipher(key)
+	src = padding(src, block.BlockSize())
+	blockmode := cipher.NewCBCEncrypter(block, key)
+	blockmode.CryptBlocks(src, src)
+	return src
+}
+
+func AESDecode(key []byte, src []byte) []byte {
+	block, _ := aes.NewCipher(key)
+	blockmode := cipher.NewCBCDecrypter(block, key)
+	blockmode.CryptBlocks(src, src)
+	src = unpadding(src)
+	return src
 }
