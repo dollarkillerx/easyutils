@@ -19,13 +19,10 @@ func TestMap(t *testing.T) {
 		"ppc": {
 			"ok":"ppc"
 		},	
-		"data": [
-			{
-				"humidity": "this is humidity",
-				"time": "this is time"
-			},
-			"hello"
-		]
+		"data": {
+			"humidity": "this is humidity",
+			"time": "this is time"
+		}
 	}
 	`
 
@@ -33,33 +30,17 @@ func TestMap(t *testing.T) {
 	if e != nil {
 		panic(e)
 	}
-
-	// 获取string
-	s, b := mapun.GetString("device")
-	if b {
-		log.Println(s)
+	get, e := mapun.Get("device")
+	if e == nil {
+		log.Println(get)
+	}else {
+		log.Fatalln(e)
 	}
 
-	// 获取map
-	i3, i4 := mapun.GetMap("ppc")
-	if i4 {
-		log.Println(i3)
-	}
-
-	// 获取slice
-	getMap, i := mapun.GetSlice("data")
-	if i {
-		log.Println(getMap)
-	}
-
-	//i2,bo := mapun.GetMap2(getMap[0])
-	//if bo {
-	//	log.Println(i2)
-	//}
-
-	// 获取 slice map
-	sliceMap, i5 := mapun.GetSliceMap("data")
-	if i5 {
-		log.Println(sliceMap)
+	get, e = mapun.Get("data","humidity")
+	if e == nil {
+		log.Println(get)
+	}else {
+		log.Fatalln(e)
 	}
 }

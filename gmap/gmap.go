@@ -6,7 +6,14 @@
  */
 package gmap
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"errors"
+)
+
+/**
+ * 重写gmap 让她更人性化
+ */
 
 type mapun struct {
 	dataStr string
@@ -27,63 +34,42 @@ func Unmarshal(jsn string) (*mapun, error) {
 	}, nil
 }
 
-func (m *mapun) GetString(key string) (string, bool) {
-	s, ok := m.mc[key].(string)
-	return s, ok
-}
-
-func (m *mapun) GetInterface(key string) (interface{}, bool) {
-	s, ok := m.mc[key]
-	return s, ok
-}
-
-func (m *mapun) GetInt(key string) (int, bool) {
-	s, ok := m.mc[key].(int)
-	return s, ok
-}
-
-func (m *mapun) GetSlice(key string) ([]interface{}, bool) {
-	i, ok := m.mc[key].([]interface{})
-	return i, ok
-}
-
-func (m *mapun) GetSlice2(data interface{}) ([]interface{}, bool) {
-	i, ok := data.([]interface{})
-	return i, ok
-}
-
-func (m *mapun) GetMap(key string) (map[string]interface{}, bool) {
-	i, ok := m.mc[key].(map[string]interface{})
-	return i, ok
-}
-
-func (m *mapun) GetMap2(data interface{}) (map[string]interface{}, bool) {
-	i, ok := data.(map[string]interface{})
-	return i, ok
-}
-
-func (m *mapun) GetSliceMap(key string) ([]map[string]interface{}, bool) {
-	data := make([]map[string]interface{}, 0)
-	slice, b := m.GetSlice(key)
-	if !b {
-		return nil, b
-	}
-
-	for _, item := range slice {
-		map2, i := m.GetMap2(item)
-		if !i {
-			continue
+func (m *mapun) Get(keys ...string) (interface{}, error) {
+	var ic map[string]interface{}
+	for nu, key := range keys {
+		var e error
+		var i2 interface{}
+		if ic == nil {
+			i2, e = m.find(m.mc, key)
+			if e != nil {
+				return nil, errors.New("not data")
+			}
+		} else {
+			i2, e = m.find(ic, key)
+			if e != nil {
+				return nil, errors.New("not data")
+			}
 		}
-		data = append(data, map2)
+		if nu != len(keys)-1 {
+			data, ok := i2.(map[string]interface{})
+			if !ok {
+				return nil, errors.New("Parsing failure")
+			} else {
+				ic = data
+				continue
+			}
+		} else {
+			return i2, e
+		}
 	}
-	return data, true
+	return nil, errors.New("not data")
 }
 
-// 消耗大
-//func (m *mapun) ToMap() (map[string]interface{}, bool) {
-//	data := make(map[string]interface{})
-//
-//	for k,v := range m.mc {
-//
-//	}
-//}
+func (m *mapun) find(it map[string]interface{}, name string) (interface{}, error) {
+	i, ok := it[name]
+	if !ok {
+		return i, errors.New("not data")
+	} else {
+		return i, nil
+	}
+}
