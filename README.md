@@ -341,7 +341,7 @@ go get github.com/dollarkillerx/easyutils
 
 	
 ### 压缩相关
-- Zip
+- Zip (废弃)
     - 压缩
      ``` 
      err := compression.Zip("./captcha_test", "out.zip")
@@ -350,7 +350,17 @@ go get github.com/dollarkillerx/easyutils
      ``` 
      err := compression.Unzip("out.zip", "./ps")
      ```
-     
+- StrZip 字符串压缩
+    - 压缩
+     ``` 
+     zip := NewStrZip()
+     s := zip.Zip(tagText)
+     ```
+    - 解压
+    ``` 
+    zip := NewStrZip()
+    unzip := zip.Unzip(s)
+    ``` 
 ### 通知邮件  (公用邮件服务器)
 ```go
 gemail.SendNifoLog([]string{toUser},fromUser,subject)

@@ -16,26 +16,39 @@ import (
 type Str struct {
 }
 
+func NewStrZip() *Str {
+	return &Str{}
+}
+
 func (s *Str) Zip(str string) string {
 	var b bytes.Buffer
 	gz := gzip.NewWriter(&b)
 	if _, err := gz.Write([]byte(str)); err != nil {
-		panic(err)
+		return ""
 	}
 	if err := gz.Flush(); err != nil {
-		panic(err)
+		return ""
 	}
 	if err := gz.Close(); err != nil {
-		panic(err)
+		return ""
 	}
 	strc := base64.StdEncoding.EncodeToString(b.Bytes())
 	return strc
 }
 
 func (s *Str) Unzip(str string) string {
-	data, _ := base64.StdEncoding.DecodeString(str)
+	data, err := base64.StdEncoding.DecodeString(str)
+	if err != nil {
+		return ""
+	}
 	rdata := bytes.NewReader(data)
-	rc, _ := gzip.NewReader(rdata)
-	all, _ := ioutil.ReadAll(rc)
+	rc, err := gzip.NewReader(rdata)
+	if err != nil {
+		return ""
+	}
+	all, err := ioutil.ReadAll(rc)
+	if err != nil {
+		return ""
+	}
 	return string(all)
 }
