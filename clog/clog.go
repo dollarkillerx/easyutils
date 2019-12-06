@@ -103,6 +103,8 @@ func Test() {
 	}
 }
 
+
+// 返回堆栈错误信息
 func PanicTrace(kb int) []byte {
 	s := []byte("/src/runtime/panic.go")
 	e := []byte("\ngoroutine ")
